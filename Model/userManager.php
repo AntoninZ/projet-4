@@ -1,5 +1,5 @@
 <?php
-	require_once("user.php");
+	require_once("Model/user.php");
 	
 	class UserManager
 	{
@@ -41,6 +41,21 @@
 			$req->execute();
 		}
 		
+		public function get($username, $password)
+		{
+			
+			$req = $this->_db->query('SELECT * FROM users WHERE username = "' .$username. '" AND password = "' .$password. '"');
+			$donnees = $req->fetch(PDO::FETCH_ASSOC);
+			
+			if($donnees)
+			{
+				return $user = new User($donnees);
+			}
+			else
+			{
+				return $donnees;
+			}
+		}
 		
 		// SETTER
 		public function setDb(PDO $db)
