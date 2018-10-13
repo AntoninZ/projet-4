@@ -8,4 +8,6 @@
         <link rel="icon" type="image/png" href="" />
 		<link rel="stylesheet" type="text/css" href="Public/css/style.css">
 		<!-- <link rel="stylesheet" type="text/css" href="mediasqueries.css"> -->
+		<script src='Public/js/tinymce/tinymce.min.js'></script>
+		<script src='Public/js/tinymce/tinymce.js'></script>
     </head>

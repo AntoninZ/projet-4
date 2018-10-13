@@ -43,7 +43,7 @@
 		{
 			$articles = [];
 			
-			$req = $this->_db->query('SELECT id, date, title, content, idChapter, status FROM articles ORDER BY date DESC');
+			$req = $this->_db->query('SELECT * FROM articles ORDER BY date DESC');
 			
 			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 			{
@@ -55,12 +55,13 @@
 		
 		public function update(Post $article)
 		{
-			$req = $this->_db-> prepare('UPDATE articles SET date = :date, title = :title, content = :content, idChapter = :chapter, status = :status WHERE id = :id');
+			$req = $this->_db-> prepare('UPDATE articles SET date = :date, title = :title, content = :content, idChapter = :idChapter, status = :status WHERE id = :id');
 			
+			$req->bindValue(':id', $article->getId(), PDO::PARAM_INT);
 			$req->bindValue(':date', $article->getDate(), PDO::PARAM_STR);
 			$req->bindValue(':title', $article->getTitle(), PDO::PARAM_STR);
 			$req->bindValue(':content', $article->getContent(), PDO::PARAM_STR);
-			$req->bindValue(':Chapter', $article->getIdChapter(), PDO::PARAM_STR);
+			$req->bindValue(':idChapter', $article->getIdChapter(), PDO::PARAM_STR);
 			$req->bindValue(':status', $article->getStatus(), PDO::PARAM_INT);
 			
 			$req->execute();

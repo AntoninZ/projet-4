@@ -11,7 +11,7 @@
 		</header>
 		
 		<div id="account">
-			<form method="post" action="index.php?action=panel">
+			<form method="post" action="index.php?action=panel&function=dashboard">
 				<label for="username">Pseudo</label>
 				<input type="text" id="username" name="username"></input>
 				
