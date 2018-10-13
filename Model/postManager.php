@@ -14,12 +14,12 @@
 		
 		public function add(Post $article)
 		{
-			$req = $this->_db->prepare('INSERT INTO articles(title, content, chapter, status) VALUES(:title, :content, :chapter, :status)');
+			$req = $this->_db->prepare('INSERT INTO articles(title, content, idChapter, status) VALUES (:title, :content, :idChapter, :status)');
 			
-			$req->bindValue(':title', $article->getTitle());
-			$req->bindValue(':content', $article->getContent());
-			$req->bindValue(':chapter', $chapter->getChapter());
-			$req->bindValue(':status', $article->getStatus());
+			$req->bindValue(':title', $article->getTitle(), PDO::PARAM_STR);
+			$req->bindValue(':content', $article->getContent(), PDO::PARAM_STR);
+			$req->bindValue(':idChapter', $article->getIdChapter(), PDO::PARAM_INT);
+			$req->bindValue(':status', $article->getStatus(), PDO::PARAM_INT);
 			
 			$req->execute();
 		}
@@ -33,7 +33,7 @@
 		{
 			$id = (int) $id;
 			
-			$req = $this->_db->query('SELECT date, title, content, idChapter, status FROM articles WHERE id = '.$id);
+			$req = $this->_db->query('SELECT * FROM articles WHERE id = '.$id);
 			$donnees = $req->fetch(PDO::FETCH_ASSOC);
 			
 			return $article = new Post($donnees);
@@ -67,6 +67,17 @@
 			$req->execute();
 		}
 		
+		public function getLastPostId()
+		{
+			$req = $this->_db->query('SELECT id FROM articles ORDER BY id DESC LIMIT 0,1');
+			$donnees = $req->fetch(PDO::FETCH_ASSOC);
+			
+			$article = new Post($donnees);
+			$id = $article->getId();
+			$id = intval($id)+1;
+			return $id;
+		}
+
 		
 		// SETTER
 		public function setDb(PDO $db)

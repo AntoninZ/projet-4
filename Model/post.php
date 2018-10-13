@@ -35,7 +35,7 @@ class Post
 	public function getDate() {return $this->_date;}
 	public function getTitle() {return $this->_title;}
 	public function getContent() {return $this->_content;}
-	public function getIdChapter() {return $this->_chapter;}
+	public function getIdChapter() {return $this->_idChapter;}
 	public function getStatus() {return $this->_status;}
 	
 	// SETTER
@@ -43,7 +43,7 @@ class Post
 	public function setDate($date) {$this->_date = $date;}
 	public function setTitle($title) {$this->_title = $title;}
 	public function setContent($content) {$this->_content = $content;}
-	public function setIdChapter($chapter) {$this->_chapter = $chapter;}
+	public function setIdChapter($idChapter) {$this->_idChapter = $idChapter;}
 	public function setStatus($status) {$this->_status = $status;}
 	
 }

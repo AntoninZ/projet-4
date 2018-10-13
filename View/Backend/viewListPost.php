@@ -16,10 +16,10 @@
 	
 			<tr>
 				<td><?= $object->getId(); ?></td>
-				<td><a href="?action=panel&amp;function=list&amp;id=<?= $object->getId(); ?>"><?= $object->getTitle(); ?></a></td>
+				<td><a href="?action=panel&amp;function=edit&amp;id=<?= $object->getId(); ?>"><?= $object->getTitle(); ?></a></td>
 				<td><?= $object->getDate(); ?></td>
 				<td><?= $object->getStatus(); ?></td>
-				<td class="editPost"><a href="?action=panel&amp;function=list&amp;id=<?= $object->getId(); ?>"><i class="fas fa-edit"></i></a></td>
+				<td class="editPost"><a title="Modifier" href="?action=panel&amp;function=edit&amp;id=<?= $object->getId(); ?>"><i class="fas fa-edit"></i></a></td>
 				<td></td>
 			</tr>
 			

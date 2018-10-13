@@ -8,10 +8,11 @@ if(isset ($_GET['action'])){
 	
 	if($_GET['action'] == 'getPost'){
 		
-		require_once('Controller/postController.php');
-		
-		$article = getPost();
 		require_once('View/header.php');
+		
+		require_once('Controller/postController.php');
+		$article = getPost();
+
 		require_once('View/frontEnd/postView.php');
 		require_once('View/footer.php');
 	}
@@ -29,33 +30,44 @@ if(isset ($_GET['action'])){
 			
 			
 			// ADMIN DASHBOARD
-			if($_SESSION['role'] == '0')
-			{				
+			if($_SESSION['role'] == 'admin')
+			{	
+				
 				if(isset($_GET['function']))
 				{
+					
 					if($_GET['function'] == 'dashboard')
 					{
 						require_once('View/backend/viewAdminBoard.php');
+						
 					}
 					
-					// The $_GET['function'] call a $content to fill viewAdminBoard.php, $content change with "backend/view..." files.
-					
-					// CREATE A NEW POST
-					else if($_GET['function'] == 'add')
+					else if($_GET['function'] == 'listPost')
 					{
-						require_once('View/backend/viewAddPost.php');
-					}
-					
-					
-					// VIEW THE LIST OF POSTS
-					else if($_GET['function'] == 'list')
-					{
+						//Liste des articles
 						require_once('Controller/postController.php');
 						$article = getList();
-						require_once('View/backEnd/viewListPost.php');
-						
-						if(isset($_GET['id']))
+						require_once('View/backEnd/viewListPost.php');						
+					}
+					else if($_GET['function'] == 'add')
+					{
+						require_once('Controller/postController.php');
+						$id = lastPostId();
+						require_once('View/backend/viewAddPost.php');
+							
+						if(isset($_GET['new']))
 						{
+							$article = addPost();
+							
+						// Changer nom variable test
+						// Au lieu de récupérer le getPost autant récupérer l'objet et l'insérer dans le contenu sans se soucier de la BDD qui sera identique en terme de contenu !
+							
+							require_once('View/backend/viewUpdatePost.php');
+						}
+					}
+					else if($_GET['function'] == 'edit')
+						{
+							require_once('Controller/postController.php');
 							if(isset($_GET['update']))
 							{
 								$article = updatePost();
@@ -63,9 +75,7 @@ if(isset ($_GET['action'])){
 							$article = getPost();
 							require_once('View/backend/viewUpdatePost.php');
 						}
-					}
-					
-					
+						
 					// VIEW THE LIST OF COMMENTS TO MODERATE THEM
 					else if($_GET['function'] == 'moderate')
 					{
@@ -78,7 +88,7 @@ if(isset ($_GET['action'])){
 			
 			
 			// MEMBER DASHBOARD
-			else if($_SESSION['role'] == '2')
+			else if($_SESSION['role'] == 'member')
 			{
 				require_once('View/backEnd/viewPanelMember.php');
 			}

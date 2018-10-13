@@ -2,7 +2,7 @@
 
 <section>
 	<article>
-		<form method="post" action="?action=panel&function=list&id=5&update">
+		<form method="post" action="?action=panel&function=edit&id=<?= $article->getId(); ?>&update">
 			<label for="title">Titre</label>
 			<input type="text" id="title" name="title" value="<?= $article->getTitle(); ?>"></input>
 			

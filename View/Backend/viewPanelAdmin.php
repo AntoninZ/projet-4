@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION) && $_SESSION['role'] == '0')
+if(isset($_SESSION) && $_SESSION['role'] == 'admin')
 {
 	// Panel d'administration
 ?>
@@ -23,7 +23,7 @@ if(isset($_SESSION) && $_SESSION['role'] == '0')
 					</a>
 				</li>
 				<li>
-					<a href="?action=panel&function=list">
+					<a href="?action=panel&function=listPost">
 						<i class="fas fa-archive"></i>
 						Liste des articles
 					</a>
@@ -34,7 +34,12 @@ if(isset($_SESSION) && $_SESSION['role'] == '0')
 						Modérer les commentaires
 					</a>
 				</li>
-				
+				<li>
+					<a href="?action=panel&function=members">
+						<i class="fas fa-users-cog"></i>
+						Gérer les membres
+					</a>
+				</li>
 			</ul>
 		</nav>
 		
@@ -45,6 +50,7 @@ if(isset($_SESSION) && $_SESSION['role'] == '0')
 <?php 
 }
 else{
+	echo "erreur : vous n'avez pas l acces a cette page"
 	// Erreur : pas d acces a la page
 ?>	
 
