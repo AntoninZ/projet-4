@@ -18,3 +18,11 @@ require_once('Model/userManager.php');
 			return $user;
 		}
 	}
+	
+	function getList()
+	{
+		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$manager = new UserManager($db);
+		$users = $manager->getList();
+		return $users;
+	}

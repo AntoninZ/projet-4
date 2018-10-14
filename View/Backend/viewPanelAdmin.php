@@ -19,21 +19,21 @@ if(isset($_SESSION) && $_SESSION['role'] == 'admin')
 						</a>
 					</li>
 					<li>
-						<a href="?action=panel&function=add">
-							<i class="fas fa-plus"></i>
-							Nouvel article
-						</a>
-					</li>
-					<li>
 						<a href="?action=panel&function=listPost">
 							<i class="fas fa-archive"></i>
 							Liste des articles
 						</a>
 					</li>
 					<li>
+						<a href="?action=panel&function=listChapter">
+							<i class="fas fa-list-ol"></i>
+							Liste des chapitres
+						</a>
+					</li>
+					<li>
 						<a href="?action=panel&function=moderate">
 							<i class="fas fa-comments"></i>
-							Commentaires
+							Gérer les commentaires
 						</a>
 					</li>
 					<li>
@@ -46,7 +46,7 @@ if(isset($_SESSION) && $_SESSION['role'] == 'admin')
 			</div>
 		</nav>
 		
-		<!-- Add viewAddPost or ViewListPost or ViewListComment -->
+		
 		<?php echo $content; ?>
 		
 	</body>

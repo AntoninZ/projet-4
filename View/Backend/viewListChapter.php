@@ -1,30 +1,26 @@
 <?php ob_start(); ?>
 <section class="viewList">
 	<header>
-		<h2>Section : Article</h2>
+		<h2>Section : Chapitre</h2>
 	</header>
 	<article>
-		<a href="?action=panel&function=add"><button class="buttonAdd">Créer un article</button></a>
+		<a href="?action=panel&function=add"><button class="buttonAdd">Créer un chapitre</button></a>
 		
 		<table>
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Titre</th>
-					<th>Date</th>
-					<th>Status</th>
+					<th>Name</th>
 					<th>Modifier</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				<?php foreach ($article as $object) { ?>
+				<?php foreach ($chapters as $object) { ?>
 		
 				<tr>
 						<td><?= $object->getId(); ?></td>
-						<td><a href="?action=panel&amp;function=edit&amp;id=<?= $object->getId(); ?>"><?= $object->getTitle(); ?></a></td>
-						<td><?= $object->getDate(); ?></td>
-						<td><?= $object->getStatus(); ?></td>
+						<td><a href="?action=panel&amp;function=edit&amp;id=<?= $object->getId(); ?>"><?= $object->getName(); ?></a></td>
 						<td><a title="Modifier l'article" href="?action=panel&amp;function=edit&amp;id=<?= $object->getId(); ?>"><i class="fas fa-edit"></i></a></td>
 				</tr>
 				

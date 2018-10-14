@@ -11,13 +11,14 @@
 			
 			<label for="idChapter">Chapitre :</label>
 			<select id="idChapter" name="idChapter">
-				<option value="1">Chapitre 1</option>
-				<option value="2">Chapitre 2</option>
+			<?php foreach ($chapters as $object) { ?>
+				<option value="<?= $object->getId(); ?>"><?= $object->getName(); ?></option>
+			<?php }?>
 			</select>
 			<br />
 			<label for="status">Action :</label>
 			<select id="status" name="status">
-				<option value="publier">Publier</option>
+				<option value="publié">Publier</option>
 				<option value="brouillon">Sauvegarder</option>
 			</select>
 			

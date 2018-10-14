@@ -57,6 +57,20 @@
 			}
 		}
 		
+		public function getList()
+		{
+			$users = [];
+			
+			$req = $this->_db->query('SELECT id, username, email, role FROM users ORDER BY id ASC');
+			
+			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+			{
+				$users[] = new User($donnees);
+			}
+			
+			return $users;
+		}
+		
 		// SETTER
 		public function setDb(PDO $db)
 		{

@@ -11,9 +11,10 @@
 			<label for="idChapter">Chapitre :</label>
 			
 			<select id="idChapter" name="idChapter">
-				<option selected="selected" value="<?= $article->getIdChapter(); ?>">Add chapter</option>
-				<option value="1">Chapitre 1</option>
-				<option value="2">Chapitre 2</option>
+				<option selected="selected" value="<?= $article->getIdChapter(); ?>">Add name of chapter</option>
+			<?php foreach ($chapters as $object) { ?>
+				<option value="<?= $object->getId(); ?>"><?= $object->getName(); ?></option>
+			<?php }?>
 			</select>
 			<br />
 			<label for="status">Action :</label>
@@ -28,6 +29,7 @@
 			
 			<button type="submit">Valider</button>
 		</form>
+		<a href="?action=panel&function=edit&id=<?= $article->getId(); ?>&delete">Supprimer l'article</a>
 	</article>
 </section>
 

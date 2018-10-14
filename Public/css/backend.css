@@ -4,7 +4,7 @@ body.panel-admin {
 }
 
 /* HEADER */
-.panel-admin header {
+.panel-admin > header {
 	width: 100%;
 	background-color: #0e4250;
 	font-weight: 600;
@@ -149,7 +149,7 @@ section.viewPost article form button[type="submit"]:hover{
 
 /* VIEW LIST POST */
 
-section.viewListPost a {
+section.viewList a {
 	color: #000;
 }
 
@@ -158,30 +158,30 @@ svg.svg-inline--fa.fa-edit.fa-w-18 {
 	color: #353535;
 }
 
-section.viewListPost article table {
+section.viewList article table {
 	border-collapse: collapse;
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
 }
-section.viewListPost article tr th, section.viewListPost article tr td {	
+section.viewList article tr th, section.viewList article tr td {	
 	border: 1px solid #0e4250;
 	border-collapse: collapse;
 	padding: 1% 0;
 }
 
-section.viewListPost article tr th {
+section.viewList article tr th {
 	background-color: #286f82;
 	color: #fff;
 	font-family: sans-serif;
 	font-weight: 100;
 }
 
-section.viewListPost article tr td {
+section.viewList article tr td {
 	padding: 1% 0;
 }
 
-section.viewListPost article tbody tr:hover, section.viewListPost article tbody tr:hover a, tr:hover svg.svg-inline--fa.fa-edit.fa-w-18{
+section.viewList article tbody tr:hover, section.viewList article tbody tr:hover a, tr:hover svg.svg-inline--fa.fa-edit.fa-w-18{
 	background-color: #5fa0b1;
 	color:#fff;
 }

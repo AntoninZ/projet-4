@@ -24,9 +24,9 @@
 			$req->execute();
 		}
 		
-		public function delete(Post $article)
+		public function delete($id)
 		{
-			$this->_db->exec('DELETE FROM articles WHERE id = '.$article->getId());
+			$this->_db->exec('DELETE FROM articles WHERE id = '.$id);
 		}
 		
 		public function get($id)
@@ -70,11 +70,17 @@
 		public function getLastPostId()
 		{
 			$req = $this->_db->query('SELECT id FROM articles ORDER BY id DESC LIMIT 0,1');
-			$donnees = $req->fetch(PDO::FETCH_ASSOC);
+			$id = $req->fetch(PDO::FETCH_ASSOC);
 			
-			$article = new Post($donnees);
-			$id = $article->getId();
-			$id = intval($id)+1;
+			if($id != NULL)
+			{
+				$id = intval($id)+1;
+			}
+			else
+			{
+				$id = 1;
+				$req = $this->_db->query('ALTER TABLE articles AUTO_INCREMENT=1');
+			}
 			return $id;
 		}
 

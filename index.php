@@ -37,46 +37,67 @@ if(isset ($_GET['action'])){
 				if(isset($_GET['function']))
 				{
 					
-					if($_GET['function'] == 'dashboard')
+					if($_GET['function'] == 'dashboard') // DASHBOARD (ACCUEIL ADMIN)
 					{
 						require_once('View/backend/viewAdminBoard.php');	
 					}
 					
-					else if($_GET['function'] == 'listPost')
-					{
-						//Liste des articles
+					else if($_GET['function'] == 'listPost') // LIST POSTS
+					{	
 						require_once('Controller/postController.php');
 						$article = getList();
+						
 						require_once('View/backEnd/viewListPost.php');						
 					}
-					else if($_GET['function'] == 'add')
+					else if($_GET['function'] == 'listChapter')
+					{
+						require_once('Controller/chapterController.php');
+						$chapters = getListChapter();
+						
+						require_once('View/backEnd/viewListChapter.php');
+					}
+					else if($_GET['function'] == 'add') // ADD A NEW POST
 					{
 						require_once('Controller/postController.php');
-						$id = lastPostId();
+						$id = lastPostId(); // Prepare the future id to redirect in viewUpdatePost.php
+						
+						require_once('Controller/ChapterController.php');
+						$chapters = getListChapter(); // Prepare the select for our form with a list of chapter
+						
 						require_once('View/backend/viewAddPost.php');
-							
-						if(isset($_GET['new']))
-						{
+						
+						if(isset($_GET['new'])) // action of submit button
+						{	
 							$article = addPost();
-							
-						// Changer nom variable test
-						// Au lieu de récupérer le getPost autant récupérer l'objet et l'insérer dans le contenu sans se soucier de la BDD qui sera identique en terme de contenu !
-							
-							require_once('View/backend/viewUpdatePost.php');
+							require_once('View/backend/viewUpdatePost.php'); // redirect client on the update of our new post
 						}
 					}
-					else if($_GET['function'] == 'edit')
-						{
-							require_once('Controller/postController.php');
-							if(isset($_GET['update']))
-							{
-								$article = updatePost();
-							}
-							$article = getPost();
-							require_once('View/backend/viewUpdatePost.php');
-						}
+					else if($_GET['function'] == 'edit') // UPDATE A POST
+					{
+						require_once('Controller/postController.php');
 						
-					// VIEW THE LIST OF COMMENTS TO MODERATE THEM
+						require_once('Controller/ChapterController.php');
+						$chapters = getListChapter(); // Prepare the select for our form with a list of chapter
+						
+						if(isset($_GET['update'])) // action of submit button
+						{
+							$article = updatePost();	
+						}
+
+						$article = getPost();
+							
+						require_once('View/backend/viewUpdatePost.php');
+							
+						if(isset($_GET['delete']))
+						{
+							$article = deletePost();
+								
+							$article = getList();
+							require_once('View/backend/viewListPost.php');
+						}
+					}
+						
+					// VIEW THE LIST OF COMMENTS WHO NEED TO BE MODERATE
 					else if($_GET['function'] == 'moderate')
 					{
 						require_once('View/backEnd/viewListComment.php');
@@ -84,6 +105,9 @@ if(isset ($_GET['action'])){
 					// VIEW THE LIST OF MEMBERS
 					else if($_GET['function'] == 'members')
 					{
+						require_once('Controller/userController.php');
+						$users = getList();
+						
 						require_once('View/backEnd/viewListMembers.php');
 					}
 				
