@@ -26,6 +26,7 @@ if(isset ($_GET['action'])){
 	else if($_GET['action'] == 'panel'){
 		if(isset($_SESSION['username']))
 		{
+			// HEADER
 			require_once('View/header.php');
 			
 			
@@ -38,8 +39,7 @@ if(isset ($_GET['action'])){
 					
 					if($_GET['function'] == 'dashboard')
 					{
-						require_once('View/backend/viewAdminBoard.php');
-						
+						require_once('View/backend/viewAdminBoard.php');	
 					}
 					
 					else if($_GET['function'] == 'listPost')
@@ -81,9 +81,15 @@ if(isset ($_GET['action'])){
 					{
 						require_once('View/backEnd/viewListComment.php');
 					}
-					
+					// VIEW THE LIST OF MEMBERS
+					else if($_GET['function'] == 'members')
+					{
+						require_once('View/backEnd/viewListMembers.php');
+					}
+				
 					require_once('View/backEnd/viewPanelAdmin.php');
-				}
+				}	
+					
 			}
 			
 			
@@ -91,9 +97,10 @@ if(isset ($_GET['action'])){
 			else if($_SESSION['role'] == 'member')
 			{
 				require_once('View/backEnd/viewPanelMember.php');
+				// FOOTER
+			require_once('View/footer.php');
 			}
 			
-			require_once('View/footer.php');
 		}
 
 		// SINGIN
@@ -113,6 +120,7 @@ if(isset ($_GET['action'])){
 			{
 			$_SESSION['username'] = $user->getUsername();
 			$_SESSION['role'] = $user->getRole();
+			session_start();
 			}
 		}
 	}
