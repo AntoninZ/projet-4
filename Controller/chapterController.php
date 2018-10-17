@@ -1,10 +1,17 @@
 <?php
 require_once('Model/ChapterManager.php');
 
-function getChapter() {		
+function getChapter($idChapter) {		
 	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
 	$manager = new ChapterManager($db);		
-	$id = $_GET['id'];		
+	if($idChapter)
+	{
+		$id = $idChapter;
+	}
+	else{
+		$id = $_GET['id'];
+	}
+	
 	$chapter = $manager->get($id);
 	return $chapter;
 }

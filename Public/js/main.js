@@ -1,4 +1,5 @@
 
+// Main navigation on post (frontend)
 
 var test = 0;
 
@@ -17,5 +18,15 @@ function toggleSummary(){
 	
 }
 
-// TINYMCE
+function signUp(){
+	$('#signUpLink').click(function(){
+		$('#signUp').css('display' , 'block');
+	});
+	
+	$('#closeSignUp').click(function(){
+		$('#signUp').css('display', 'none')
+	});
+};
 
+
+signUp();

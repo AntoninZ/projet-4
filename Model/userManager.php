@@ -3,8 +3,7 @@
 	
 	class UserManager
 	{
-		private $_db; // INSTANCE PDO
-		
+		private $_db;
 		
 		public function __construct($db)
 		{
@@ -14,54 +13,57 @@
 		public function add(User $user)
 		{
 			
-			$req = $this->_db->prepare('INSERT INTO users(name, password, email, role) VALUES(:name, :password, :email, :role)');
+			$req = $this->_db->prepare('INSERT INTO users(username, password, role) VALUES (:username, :password, :role)');
 			
-			$req->bindValue(':name', $user->getName());
-			$req->bindValue(':password', $user->getPassword());
-			$req->bindValue(':email', $user->getEmail());
+			$req->bindValue(':username', $user->getUsername());
+			$req->bindValue(':password', password_hash($user->getPassword(), PASSWORD_DEFAULT));
 			$req->bindValue(':role', $user->getRole());
 			
 			$req->execute();
+			
 		}
 		
 		public function delete(User $user)
 		{
-			$this->_db->exec('DELETE * FROM users WHERE id = '.$user->getId());
+			$req = $this->_db->prepare('DELETE * FROM users WHERE id = :id');
+			
+			$req->bindValue(':id', $user->getId());
+			
+			$req->execute();
+			
+			return true;
 		}
 		
 		
 		public function update(User $user)
 		{
-			$req = $this->_db-> prepare('UPDATE users SET email = :email, role = :role WHERE id = :id');
+			$req = $this->_db-> prepare('UPDATE users SET username = :username, role = :role WHERE id = :id');
 			
 			$req->bindValue(':id', $user->getId(), PDO::PARAM_INT);
-			$req->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
-			$req->bindValue(':role', $user->getRole(), PDO::PARAM_INT);
-			
+			$req->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
+			$req->bindValue(':role', $user->getRole(), PDO::PARAM_STR);
 			$req->execute();
+			
+			return true;
 		}
 		
-		public function get($username, $password)
+		public function get(User $user)
 		{
 			
-			$req = $this->_db->query('SELECT * FROM users WHERE username = "' .$username. '" AND password = "' .$password. '"');
+			$req = $this->_db->query('SELECT * FROM users WHERE username = "' . $user->getUsername() . '"');
 			$donnees = $req->fetch(PDO::FETCH_ASSOC);
 			
-			if($donnees)
-			{
-				return $user = new User($donnees);
-			}
-			else
-			{
-				return $donnees;
-			}
+			
+			return $userInfo = new User($donnees);
+			
+			
 		}
 		
 		public function getList()
 		{
 			$users = [];
 			
-			$req = $this->_db->query('SELECT id, username, email, role FROM users ORDER BY id ASC');
+			$req = $this->_db->query('SELECT * FROM users ORDER BY id ASC');
 			
 			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 			{
@@ -78,7 +80,3 @@
 		}
 
 	}
-	
-	
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-	$manager = new userManager($db);

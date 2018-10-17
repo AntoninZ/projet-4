@@ -3,7 +3,10 @@ h1, h2, h3 {
 	margin: 0;
 	font-weight: normal;
 }
-
+html {
+	min-height: 100%;
+	position: relative;
+}
 body {margin: 0;}
 
 a {text-decoration: none;}

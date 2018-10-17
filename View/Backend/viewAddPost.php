@@ -2,7 +2,7 @@
 
 <section class="viewPost">
 	<article>
-		<form method="post" action="?action=panel&function=add&new&id=<?= $id ?>">
+		<form method="post" action="?function=edit&new&id=<?= $article->getId(); ?>">
 			<label for="title" class="nolabel">Titre</label>
 			<input type="text" id="title" name="title" placeholder="Titre de l'article"></input>
 			

@@ -1,10 +1,5 @@
-body.panel-admin {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-/* HEADER */
-.panel-admin > header {
+/* HEADER - GLOBAL */
+.panel-admin > header, .panel-member > header, .panel-connexion > header {
 	width: 100%;
 	background-color: #0e4250;
 	font-weight: 600;
@@ -13,9 +8,62 @@ body.panel-admin {
 	z-index: 10;
 	color: #fff;
 }
-.panel-admin header h1 {
+.panel-admin header h1, .panel-member > header h1, .panel-connexion > header h1 {
 	padding: 1% 0%;
 	text-align: center;
+}
+
+
+/* VIEW CONNEXION */
+body.panel-connexion section article {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 4% auto;
+	width: 50%;
+}
+.panel-connexion form#signUp, .panel-connexion form#signIn {
+	width: 50%;
+}
+.panel-connexion hr {
+	width: 50%;
+	margin: 2% 0 5% 0;
+}
+.panel-connexion section article label {
+	width: 200px;
+	display: block;
+	margin: 2% 0;
+	font-family: sans-serif;
+}
+.panel-connexion section article input {
+	width: 200px;
+	display: block;
+	margin: 0 0 5% 0;
+	padding: 1%;
+	font-family: sans-serif;
+	border-radius: 5px;
+	border: 1px solid #286f82;
+}
+.panel-connexion section article button {
+	min-width: 100px;
+	display: block;
+	background-color: #286f82;
+	color: #fff;
+	font-family: sans-serif;
+	border: 1px solid #0e4250;
+	padding: 1%;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.panel-connexion section article button:hover {
+	background-color: #38899e;
+}
+
+
+/* ADMIN PANEL */
+
+body.panel-admin {
+	display: flex;
+	flex-wrap: wrap;
 }
 
 /* NAVIGATION */
@@ -122,7 +170,7 @@ section.viewPost article form label{
 	font-family: sans-serif;
 }
 section.viewPost article form select {
-	width: 200px;
+	width: 275px;
 	padding: 0.5%;
 }
 
@@ -153,7 +201,7 @@ section.viewList a {
 	color: #000;
 }
 
-svg.svg-inline--fa.fa-edit.fa-w-18 {
+svg.svg-inline--fa.fa-edit.fa-w-18, svg.svg-inline--fa.fa-trash-alt.fa-w-14 {
 	font-size: 1.3em;
 	color: #353535;
 }
@@ -181,7 +229,7 @@ section.viewList article tr td {
 	padding: 1% 0;
 }
 
-section.viewList article tbody tr:hover, section.viewList article tbody tr:hover a, tr:hover svg.svg-inline--fa.fa-edit.fa-w-18{
+section.viewList article tbody tr:hover, section.viewList article tbody tr:hover a, tr:hover svg.svg-inline--fa.fa-edit.fa-w-18, tr:hover svg.svg-inline--fa.fa-trash-alt.fa-w-14{
 	background-color: #5fa0b1;
 	color:#fff;
 }

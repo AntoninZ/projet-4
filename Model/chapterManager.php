@@ -14,7 +14,7 @@
 		
 		public function add(Chapter $chapter)
 		{
-			$req = $this->_db->prepare('INSERT INTO chapters(name) VALUES (:name)');
+			$req = $this->_db->prepare('INSERT INTO chapters (name) VALUES (:name)');
 			
 			$req->bindValue(':name', $chapter->getName(), PDO::PARAM_STR);
 			

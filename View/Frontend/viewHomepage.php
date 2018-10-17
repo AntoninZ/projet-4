@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="" />
         <link rel="icon" type="image/png" href="" />
-		<link rel="stylesheet" type="text/css" href="Public/css/style.css">
+		<link rel="stylesheet" type="text/css" href="Public/css/frontend.css">
 		<!-- <link rel="stylesheet" type="text/css" href="mediasqueries.css"> -->
     </head>
 		
@@ -41,7 +41,7 @@
 				<h1>Jean Forteroche <br />
 				Un billet simple pour l'Alaska</h1>
 				<div>
-					<a href="?action=getPost"><i class="far fa-play-circle play"></i><br />
+					<a href="?page=postView?id=1"><i class="far fa-play-circle play"></i><br />
 					Commencer la lecture</a>
 				</div>
 				<p class="edition">Edition Flemmarion</p>

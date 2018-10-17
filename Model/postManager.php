@@ -14,12 +14,12 @@
 		
 		public function add(Post $article)
 		{
-			$req = $this->_db->prepare('INSERT INTO articles(title, content, idChapter, status) VALUES (:title, :content, :idChapter, :status)');
+			$req = $this->_db->prepare('INSERT INTO articles(id, title, content, idChapter) VALUES (:id, :title, :content, :idChapter)');
 			
+			$req->bindValue(':id', $article->getId(), PDO::PARAM_INT);
 			$req->bindValue(':title', $article->getTitle(), PDO::PARAM_STR);
 			$req->bindValue(':content', $article->getContent(), PDO::PARAM_STR);
 			$req->bindValue(':idChapter', $article->getIdChapter(), PDO::PARAM_INT);
-			$req->bindValue(':status', $article->getStatus(), PDO::PARAM_INT);
 			
 			$req->execute();
 		}
@@ -55,14 +55,13 @@
 		
 		public function update(Post $article)
 		{
-			$req = $this->_db-> prepare('UPDATE articles SET date = :date, title = :title, content = :content, idChapter = :idChapter, status = :status WHERE id = :id');
+			$req = $this->_db-> prepare('UPDATE articles SET date = :date, title = :title, content = :content, idChapter = :idChapter WHERE id = :id');
 			
 			$req->bindValue(':id', $article->getId(), PDO::PARAM_INT);
 			$req->bindValue(':date', $article->getDate(), PDO::PARAM_STR);
 			$req->bindValue(':title', $article->getTitle(), PDO::PARAM_STR);
 			$req->bindValue(':content', $article->getContent(), PDO::PARAM_STR);
 			$req->bindValue(':idChapter', $article->getIdChapter(), PDO::PARAM_STR);
-			$req->bindValue(':status', $article->getStatus(), PDO::PARAM_INT);
 			
 			$req->execute();
 		}
@@ -70,18 +69,20 @@
 		public function getLastPostId()
 		{
 			$req = $this->_db->query('SELECT id FROM articles ORDER BY id DESC LIMIT 0,1');
-			$id = $req->fetch(PDO::FETCH_ASSOC);
+			$donnees = $req->fetch(PDO::FETCH_ASSOC);
 			
-			if($id != NULL)
+			if($donnees)
 			{
-				$id = intval($id)+1;
+				$article = new Post($donnees);
+				$id = intval($article->getId())+1;
+				$article->setId($id);
 			}
 			else
 			{
-				$id = 1;
+				$article = new Post(['id' => '1']);
 				$req = $this->_db->query('ALTER TABLE articles AUTO_INCREMENT=1');
 			}
-			return $id;
+			return $article;
 		}
 
 		
@@ -97,13 +98,4 @@
 	}
 	
 
-	// Méthode pour récuperer les données de la méthode get()
-	// $db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-	// $manager = new PostManager($db);
-	
-	// $article = $manager->get('4');
-	// echo $article->getTitle();
-	// echo $article->getContent();
-	// echo $article->getStatus();
-	
 	

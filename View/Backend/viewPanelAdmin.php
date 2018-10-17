@@ -13,31 +13,31 @@ if(isset($_SESSION) && $_SESSION['role'] == 'admin')
 				<h2>Accès rapide</h2>
 				<ul>
 					<li>
-						<a href="?action=panel&function=dashboard">
+						<a href="?">
 							<i class="fas fa-home"></i>
 							Tableau de bord
 						</a>
 					</li>
 					<li>
-						<a href="?action=panel&function=listPost">
+						<a href="?function=listPost">
 							<i class="fas fa-archive"></i>
 							Liste des articles
 						</a>
 					</li>
 					<li>
-						<a href="?action=panel&function=listChapter">
+						<a href="?function=listChapter">
 							<i class="fas fa-list-ol"></i>
 							Liste des chapitres
 						</a>
 					</li>
 					<li>
-						<a href="?action=panel&function=moderate">
+						<a href="?function=moderate">
 							<i class="fas fa-comments"></i>
 							Gérer les commentaires
 						</a>
 					</li>
 					<li>
-						<a href="?action=panel&function=members">
+						<a href="?function=members">
 							<i class="fas fa-users-cog"></i>
 							Gérer les membres
 						</a>

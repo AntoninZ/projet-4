@@ -9,6 +9,5 @@
 		<link rel="stylesheet" type="text/css" href="Public/css/frontend.css">
 		<link rel="stylesheet" type="text/css" href="Public/css/backend.css">
 		<!-- <link rel="stylesheet" type="text/css" href="mediasqueries.css"> -->
-		<script src='Public/js/tinymce/tinymce.min.js'></script>
-		<script src='Public/js/tinymce/tinymce.js'></script>
+		
     </head>

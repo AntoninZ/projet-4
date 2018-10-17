@@ -9,11 +9,10 @@
 		<table>
 			<thead>
 				<tr>
-					<th>ID</th>
 					<th>Titre</th>
 					<th>Date</th>
-					<th>Status</th>
 					<th>Modifier</th>
+					<th>Supprimer</th>
 				</tr>
 			</thead>
 			
@@ -21,11 +20,11 @@
 				<?php foreach ($article as $object) { ?>
 		
 				<tr>
-						<td><?= $object->getId(); ?></td>
-						<td><a href="?action=panel&amp;function=edit&amp;id=<?= $object->getId(); ?>"><?= $object->getTitle(); ?></a></td>
-						<td><?= $object->getDate(); ?></td>
-						<td><?= $object->getStatus(); ?></td>
+						
+						<td><a href="?function=edit&amp;id=<?= $object->getId(); ?>"><?= $object->getTitle(); ?></a></td>
+						<td><?=date('d/m/Y', strtotime($object->getDate())); ?></td>
 						<td><a title="Modifier l'article" href="?action=panel&amp;function=edit&amp;id=<?= $object->getId(); ?>"><i class="fas fa-edit"></i></a></td>
+						<td><a title="Supprimer l'article" href="?function=listPost&amp;delete&amp;id=<?= $object->getId(); ?>"><i class="fas fa-trash-alt"></a></i>
 				</tr>
 				
 				<?php } ?>
