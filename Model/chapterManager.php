@@ -66,10 +66,19 @@
 			$req = $this->_db->query('SELECT id FROM chapters ORDER BY id DESC LIMIT 0,1');
 			$donnees = $req->fetch(PDO::FETCH_ASSOC);
 			
-			$chapter = new Chapter($donnees);
-			$id = $chapter->getId();
-			$id = intval($id)+1;
-			return $id;
+			if($donnees)
+			{
+				$chapter = new Chapter($donnees);
+				$id = intval($chapter->getId())+1;
+				$chapter->setId($id);
+			}
+			else
+			{
+				$chapter = new Chapter(['id' => '1']);
+				$req = $this->_db->query('ALTER TABLE articles AUTO_INCREMENT=1');
+			}
+			
+			return $chapter;
 		}
 		// SETTER
 		public function setDb(PDO $db)

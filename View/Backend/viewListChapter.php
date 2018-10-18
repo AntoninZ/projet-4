@@ -4,14 +4,14 @@
 		<h2>Section : Chapitre</h2>
 	</header>
 	<article>
-		<a href="?action=panel&function=add"><button class="buttonAdd">Créer un chapitre</button></a>
+		<a href="?function=addChapter"><button class="buttonAdd">Créer un chapitre</button></a>
 		
 		<table>
 			<thead>
 				<tr>
-					<th>ID</th>
 					<th>Name</th>
 					<th>Modifier</th>
+					<th>Supprimer</th>
 				</tr>
 			</thead>
 			
@@ -19,9 +19,9 @@
 				<?php foreach ($chapters as $object) { ?>
 		
 				<tr>
-						<td><?= $object->getId(); ?></td>
-						<td><a href="?action=panel&amp;function=edit&amp;id=<?= $object->getId(); ?>"><?= $object->getName(); ?></a></td>
-						<td><a title="Modifier l'article" href="?action=panel&amp;function=edit&amp;id=<?= $object->getId(); ?>"><i class="fas fa-edit"></i></a></td>
+						<td><a href="?function=editChapter&amp;id=<?= $object->getId(); ?>"><?= $object->getName(); ?></a></td>
+						<td><a title="Modifier l'article" href="?function=editChapter&amp;id=<?= $object->getId(); ?>"><i class="fas fa-edit"></i></a></td>
+						<td><a title="Supprimer l'article" href="?function=listChapter&amp;delete&amp;id=<?= $object->getId(); ?>"><i class="fas fa-trash-alt"></a></i></td>
 				</tr>
 				
 				<?php } ?>

@@ -6,12 +6,13 @@ require_once('View/header.php');
 // USER DISCONNECTED
 if(isset($_SESSION['username']) == FALSE)
 {
-		require_once('View/backEnd/viewConnexion.php');
+	require_once('View/backEnd/viewConnexion.php');
+	
 	if(isset($_GET['signIn']))
 	{
 		require_once('Controller/userController.php');
 	
-		$user = getUser();
+		$user = getUserLogin();
 		
 		session_start();
 		$_SESSION['username'] = $user->getUsername();
@@ -44,21 +45,10 @@ if(isset($_SESSION['username']))
 				if(isset($_GET['delete']))
 				{
 					$article = deletePost();
-						
 				}
-							
-				$article = getList();
-
-				require_once('View/backEnd/viewListPost.php');						
-			}
-			
-			// LIST OF CHAPTERS
-			else if($_GET['function'] == 'listChapter')
-			{
-				require_once('Controller/chapterController.php');
-				$chapters = getListChapter();
 				
-				require_once('View/backEnd/viewListChapter.php');
+				$article = getList();
+				require_once('View/backEnd/viewListPost.php');						
 			}
 			
 			// ADD A NEW POST
@@ -94,15 +84,60 @@ if(isset($_SESSION['username']))
 				
 				$article = getPost();
 				$idChapter = $article->getIdChapter();
-				$chapter = getChapter($idChapter);
+				$chapter = getChapterInfo($idChapter);
 				require_once('View/backend/viewUpdatePost.php');
 				
 				
 			}
 			
-			// LIST OF COMMENTS WHO NEED TO BE MODERATE
+			// LIST OF CHAPTERS
+			else if($_GET['function'] == 'listChapter')
+			{
+				require_once('Controller/chapterController.php');
+				
+				if(isset($_GET['delete']))
+				{
+					deleteChapter();
+				}
+				
+				$chapters = getListChapter();
+				require_once('View/backEnd/viewListChapter.php');
+			}
+			// ADD CHAPTER
+			else if($_GET['function'] == 'addChapter')
+			{
+				require_once('Controller/ChapterController.php');
+				$chapter = lastChapterId(); // Prepare the future id to redirect in viewUpdatePost.php
+				require_once('View/backEnd/viewAddChapter.php');
+			}
+			// UPDATE CHAPTER
+			else if($_GET['function'] == 'editChapter')
+			{
+				require_once('Controller/chapterController.php');
+				
+				if(isset($_GET['update']))
+				{
+					$chapter = updateChapter();
+				}
+				else if(isset($_GET['new']))
+				{
+					$chapter = addChapter();
+				}
+				
+				$chapter = getChapter();
+				require_once('View/backEnd/viewUpdateChapter.php');
+			}
+			
+			// LIST OF COMMENTS
 			else if($_GET['function'] == 'moderate')
 			{
+				require_once('Controller/commentController.php');
+				
+				if(isset($_GET['delete'])
+				{
+					deleteComment();
+				}
+				
 				require_once('View/backEnd/viewListComment.php');
 			}
 			
@@ -116,8 +151,16 @@ if(isset($_SESSION['username']))
 			}	
 			else if($_GET['function'] == 'editUser')
 			{
-				require_once('Controller/userController.php');
-				$users = 
+				require_once('Controller/userController.php');		
+					
+				if(isset($_GET['update']))
+				{
+					$user = updateUser();
+
+				}
+				
+				$user = getUserInfo();
+				require_once('View/backEnd/viewUpdateUser.php');
 			}
 		}
 		

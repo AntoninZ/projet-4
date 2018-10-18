@@ -48,15 +48,20 @@
 		}
 		
 		public function get(User $user)
-		{
-			
-			$req = $this->_db->query('SELECT * FROM users WHERE username = "' . $user->getUsername() . '"');
+		{	
+			$verify = $user->getUsername();
+			if(isset($verify))
+			{
+				$req = $this->_db->query('SELECT * FROM users WHERE username = "' . $user->getUsername() . '"');
+			}
+			else
+			{
+				$req = $this->_db->query('SELECT * FROM users WHERE id = "' . $user->getId() . '"');
+			}
 			$donnees = $req->fetch(PDO::FETCH_ASSOC);
 			
 			
-			return $userInfo = new User($donnees);
-			
-			
+			return $userInfo = new User($donnees);	
 		}
 		
 		public function getList()

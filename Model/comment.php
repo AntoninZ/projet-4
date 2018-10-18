@@ -8,6 +8,7 @@ class Comment
 	private $_date;
 	private $_content;
 	private $_moderate;
+	private $_reportCount;
 	
 	public function __construct(array $donnees)
 	{
@@ -37,12 +38,14 @@ class Comment
 	public function getDate() {return $this->_date;}
 	public function getContent() {return $this->_content;}
 	public function getModerate() {return $this->_moderate;}
+	public function getReportCount() {return $this->_reportCount;}
 	
 	// SETTER
-	public function setId() {$this->_id = $id;}
-	public function setIdPost() {$this->_idPost = $idPost;}
-	public function setIdUser() {$this->_idAuthor = $idUser;}
-	public function setDate() {$this->_date = $date;}
-	public function setContent() {$this->_content = $content;}
-	public function setModerate() {$this->_moderate = $moderate;}
+	public function setId($id) {$this->_id = $id;}
+	public function setIdPost($idPost) {$this->_idPost = $idPost;}
+	public function setIdUser($idUser) {$this->_idAuthor = $idUser;}
+	public function setDate($date) {$this->_date = $date;}
+	public function setContent($content) {$this->_content = $content;}
+	public function setModerate($moderate) {$this->_moderate = $moderate;}
+	public function setReportCount($reportCount) {$this->_reportCount = $reportCount;}
 }

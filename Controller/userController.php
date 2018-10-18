@@ -2,7 +2,7 @@
 
 require_once('Model/userManager.php');
 
-	function getUser() {
+	function getUserLogin() {
 		
 		$username = $_POST['username'];
 		$password = $_POST['password'];
@@ -32,7 +32,7 @@ require_once('Model/userManager.php');
 		$user = new User([
 			'username' => $_POST['username2'],
 			'password' => $_POST['password2'],
-			'role' => 'admin'
+			'role' => 'Lecteur'
 		]);
 		
 		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
@@ -49,6 +49,19 @@ require_once('Model/userManager.php');
 		$manager = new UserManager($db);
 		$users = $manager->getList();
 		return $users;
+	}
+	
+	function getUserInfo()
+	{
+		$userReq = new User([
+			'id' => $_GET['id']
+		]);
+		
+		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$manager = new UserManager($db);
+		$user = $manager->get($userReq);
+		
+		return $user;
 	}
 	
 	function updateUser()
