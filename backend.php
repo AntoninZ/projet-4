@@ -133,11 +133,16 @@ if(isset($_SESSION['username']))
 			{
 				require_once('Controller/commentController.php');
 				
-				if(isset($_GET['delete'])
+				if(isset($_GET['delete']))
 				{
 					deleteComment();
 				}
+				else if(isset($_GET['validate']))
+				{
+					validateComment();
+				}
 				
+				$comments = getListComment();
 				require_once('View/backEnd/viewListComment.php');
 			}
 			
