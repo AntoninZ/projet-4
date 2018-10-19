@@ -7,6 +7,7 @@ class Post
 	private $_title;
 	private $_content;
 	private $_idChapter;
+	private $_name;
 	
 	public function __construct(array $donnees)
 	{
@@ -35,6 +36,7 @@ class Post
 	public function getTitle() {return $this->_title;}
 	public function getContent() {return $this->_content;}
 	public function getIdChapter() {return $this->_idChapter;}
+	public function getName() {return $this->_name;}
 	
 	// SETTER
 	public function setId($id) {$this->_id = $id;}
@@ -42,5 +44,6 @@ class Post
 	public function setTitle($title) {$this->_title = $title;}
 	public function setContent($content) {$this->_content = $content;}
 	public function setIdChapter($idChapter) {$this->_idChapter = $idChapter;}
+	public function setName($name) {$this->_name = $name;}
 	
 }

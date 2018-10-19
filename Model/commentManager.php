@@ -11,15 +11,31 @@
 			$this->setDb($db);
 		}
 
+		public function get($id)
+		{
+			
+			$req = $this->_db->query('SELECT * FROM comments WHERE id = '.$id);
+			$donnees = $req->fetch(PDO::FETCH_ASSOC);
+			
+			return $comment = new Comment($donnees);
+		}
+		
+		public function findIdUser($username)
+		{
+			$req = $this->_db->query('SELECT id FROM users WHERE username = \'' .$username. '\'');
+			$donnees = $req->fetch();
+			
+			return $donnees['id'];
+		}
 		
 		public function add(comment $comment)
 		{
 			$req = $this->_db->prepare('INSERT INTO comments(idPost, idAuthor, content, moderate, reportCount) VALUES(:idPost, :idAuthor, :content, :moderate, :reportCount)');
-			$req->bindValue(':idPost', $comment->getTitle());
-			$req->bindValue(':idAuthor', $comment->getContent());
-			$req->bindValue(':content', $comment->getStatus());
+			$req->bindValue(':idPost', $comment->getIdPost());
+			$req->bindValue(':idAuthor', $comment->getIdUser());
+			$req->bindValue(':content', $comment->getContent());
 			$req->bindValue(':moderate', $comment->getModerate());
-			$req->bindValue(':reportCount', $comment->reportCount());
+			$req->bindValue(':reportCount', $comment->getReportCount());
 			$req->execute();
 		}
 		
@@ -38,11 +54,18 @@
 			return new comment($donnees);
 		}
 		
-		public function getList()
+		public function getList($id)
 		{
 			$comments = [];
 			
-			$req = $this->_db->query('SELECT member.name, comments.content, comments.moderate FROM members, comments WHERE comments.idPost = '.$idPost);
+			$req = $this->_db->prepare('
+				SELECT comments.id, comments.idPost, comments.date, comments.content, users.username 
+				FROM comments 
+				INNER JOIN articles ON comments.idPost = articles.id AND articles.id = :id 
+				INNER JOIN users ON comments.idAuthor = users.id ORDER BY comments.date DESC
+			');
+			$req->bindValue(':id', $id);
+			$req->execute();
 			
 			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 			{

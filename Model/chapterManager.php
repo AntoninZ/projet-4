@@ -80,6 +80,15 @@
 			
 			return $chapter;
 		}
+		
+		public function getCountChapter()
+		{
+			$req = $this->_db->query('SELECT COUNT(id) from chapters');
+			$donnees = $req->fetch();
+			
+			return $donnees['COUNT(id)'];
+		}
+		
 		// SETTER
 		public function setDb(PDO $db)
 		{

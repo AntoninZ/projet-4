@@ -4,7 +4,9 @@ class Comment
 {
 	private $_id;
 	private $_idPost;
+	private $_postName;
 	private $_idUser;
+	private $_userName;
 	private $_date;
 	private $_content;
 	private $_moderate;
@@ -34,7 +36,9 @@ class Comment
 	// GETTER
 	public function getId() {return $this->_id;}
 	public function getIdPost() {return $this->_idPost;}
+	public function getPostName() {return $this->_postName;}
 	public function getIdUser() {return $this->_idUser;}
+	public function getUserName() {return $this->_userName;}
 	public function getDate() {return $this->_date;}
 	public function getContent() {return $this->_content;}
 	public function getModerate() {return $this->_moderate;}
@@ -43,7 +47,9 @@ class Comment
 	// SETTER
 	public function setId($id) {$this->_id = $id;}
 	public function setIdPost($idPost) {$this->_idPost = $idPost;}
-	public function setIdUser($idUser) {$this->_idAuthor = $idUser;}
+	public function setPostName($postName) {$this->_postName = $postName;}
+	public function setIdUser($idUser) {$this->_idUser = $idUser;}
+	public function setUserName($userName) {$this->_userName = $userName;}
 	public function setDate($date) {$this->_date = $date;}
 	public function setContent($content) {$this->_content = $content;}
 	public function setModerate($moderate) {$this->_moderate = $moderate;}

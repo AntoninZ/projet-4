@@ -41,7 +41,7 @@
 				<h1>Jean Forteroche <br />
 				Un billet simple pour l'Alaska</h1>
 				<div>
-					<a href="?page=postView?id=1"><i class="far fa-play-circle play"></i><br />
+					<a href="?page=postView&amp;id=1"><i class="far fa-play-circle play"></i><br />
 					Commencer la lecture</a>
 				</div>
 				<p class="edition">Edition Flemmarion</p>

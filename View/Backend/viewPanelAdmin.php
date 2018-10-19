@@ -1,6 +1,7 @@
 <?php
-if(isset($_SESSION) && $_SESSION['role'] == 'admin')
+if(isset($_SESSION))
 {
+	if($_SESSION['role'] == 'admin')
 	// Panel d'administration
 ?>
 	<body class="panel-admin">
@@ -40,6 +41,12 @@ if(isset($_SESSION) && $_SESSION['role'] == 'admin')
 						<a href="?function=members">
 							<i class="fas fa-users-cog"></i>
 							Gérer les membres
+						</a>
+					</li>
+					<li>
+						<a href="?signOut">
+							<i class="fas fa-sign-out-alt"></i>
+							Se déconnecter
 						</a>
 					</li>
 				</ul>

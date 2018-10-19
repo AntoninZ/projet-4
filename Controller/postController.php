@@ -62,3 +62,4 @@ function deletePost()
 	$manager = new PostManager($db);
 	$manager->delete($id);
 }
+

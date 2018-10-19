@@ -22,7 +22,7 @@
 				<tr>
 						
 						<td><a href="?function=edit&amp;id=<?= $object->getId(); ?>"><?= $object->getTitle(); ?></a></td>
-						<td><?=date('d/m/Y', strtotime($object->getDate())); ?></td>
+						<td><?= date('d/m/Y', strtotime($object->getDate())); ?></td>
 						<td><a title="Modifier l'article" href="?function=edit&amp;id=<?= $object->getId(); ?>"><i class="fas fa-edit"></i></a></td>
 						<td><a title="Supprimer l'article" href="?function=listPost&amp;delete&amp;id=<?= $object->getId(); ?>"><i class="fas fa-trash-alt"></a></i></td>
 				</tr>

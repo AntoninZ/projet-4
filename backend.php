@@ -3,33 +3,39 @@ session_start();
 
 // HEADER
 require_once('View/header.php');
+
+// SIGNOUT
+if(isset($_GET['signOut']))
+{
+	$_SESSION = array();
+	session_unset();
+	session_destroy();
+}
+
+if(isset($_GET['signIn']))
+{
+	require_once('Controller/userController.php');
+
+	$user = getUserLogin();
+	
+	$_SESSION['username'] = $user->getUsername();
+	$_SESSION['role'] = $user->getRole();
+	
+}
+
+if(isset($_GET['signUp']))
+{
+	require_once('Controller/userController.php');
+	$newUser = addUser();
+}
+
 // USER DISCONNECTED
 if(isset($_SESSION['username']) == FALSE)
 {
 	require_once('View/backEnd/viewConnexion.php');
-	
-	if(isset($_GET['signIn']))
-	{
-		require_once('Controller/userController.php');
-	
-		$user = getUserLogin();
-		
-		session_start();
-		$_SESSION['username'] = $user->getUsername();
-		$_SESSION['role'] = $user->getRole();
-		
-		
-	}
-	else if(isset($_GET['signUp']))
-	{
-		require_once('Controller/userController.php');
-		$newUser = addUser();
-	}
-	
-	
 }
 // USER CONNECTED
-if(isset($_SESSION['username']))
+else if(isset($_SESSION['username']))
 {
 	// ADMIN DASHBOARD
 	if($_SESSION['role'] == 'admin')
@@ -81,12 +87,10 @@ if(isset($_SESSION['username']))
 					$article = addPost();
 				}
 				
-				
 				$article = getPost();
 				$idChapter = $article->getIdChapter();
 				$chapter = getChapterInfo($idChapter);
 				require_once('View/backend/viewUpdatePost.php');
-				
 				
 			}
 			
@@ -178,13 +182,7 @@ if(isset($_SESSION['username']))
 		require_once('View/backEnd/viewPanelAdmin.php'); // TEMPLATE	
 	}
 	
-	// MEMBER DASHBOARD
-	else if($_SESSION['role'] == 'member')
-	{
-		require_once('View/backEnd/viewPanelMember.php');
-	}
 }
-
 
 //FOOTER
 require_once('View/footer.php');

@@ -33,11 +33,13 @@
 		{
 			$id = (int) $id;
 			
-			$req = $this->_db->query('SELECT * FROM articles WHERE id = '.$id);
+			$req = $this->_db->query('SELECT articles.*, chapters.name FROM articles INNER JOIN chapters ON articles.idChapter = chapters.id AND articles.id = '.$id);
 			$donnees = $req->fetch(PDO::FETCH_ASSOC);
 			
 			return $article = new Post($donnees);
 		}
+		
+		
 		
 		public function getList()
 		{
@@ -84,13 +86,28 @@
 			}
 			return $article;
 		}
-
+		
+		public function getPostByIdChapter($id)
+		{
+			$titles = [];
+			
+			$req = $this->_db->query('SELECT title, id FROM articles WHERE idChapter ='.$id);
+			while($donnees = $req->fetch())
+			{
+				$titles[] = ['title' => $donnees['title'], 'id' => $donnees['id']];
+			}
+			
+			return $titles;
+		}
+		
+		
 		
 		// SETTER
 		public function setDb(PDO $db)
 		{
 			$this->_db = $db;
 		}
+		
 		public function getDb()
 		{
 			return $this->_db;

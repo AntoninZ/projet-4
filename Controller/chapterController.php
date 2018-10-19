@@ -11,6 +11,16 @@ function getChapter() {
 	return $chapter;
 }
 
+function getChapterNameById($id) {
+	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$manager = new ChapterManager($db);		
+
+	$chapter = $manager->get($id);
+	
+	$donnees = $chapter->getName();
+	return $donnees;
+}
+
 function getChapterInfo($idChapter) {
 	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
 	$manager = new ChapterManager($db);		
@@ -47,7 +57,15 @@ function addChapter() {
 	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
 	$manager = new ChapterManager($db);
 	$manager->add($chapter);
+}
+
+function ChapterCount() {
 	
+	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$manager = new ChapterManager($db);
+	$ChapterCount = $manager->getCountChapter();
+	
+	return $ChapterCount;
 }
 
 function lastChapterId(){
