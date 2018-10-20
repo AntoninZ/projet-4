@@ -23,12 +23,6 @@ if(isset($_GET['signIn']))
 	
 }
 
-if(isset($_GET['signUp']))
-{
-	require_once('Controller/userController.php');
-	$newUser = addUser();
-}
-
 // USER DISCONNECTED
 if(isset($_SESSION['username']) == FALSE)
 {

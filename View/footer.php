@@ -2,7 +2,7 @@
 			<p>Jean Forteroche - Tous droits réservés - 2018 <i class="far fa-copyright"></i></p>
 			<a href="">Mentions légales</a>
 			<a href="">Contact</a>
-			</ul>
+			<a href="backend.php"><i class="far fa-user-circle" title="Connexion"></i></a>
 		</footer>
 	</body>
 	<!-- Javascript -->

@@ -63,3 +63,12 @@ function deletePost()
 	$manager->delete($id);
 }
 
+function CountPost()
+{
+	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$manager = new PostManager($db);		
+	
+	$donnees = $manager->CountPost();
+	return $donnees;
+}
+

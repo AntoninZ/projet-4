@@ -3,18 +3,18 @@
 require_once('Model/userManager.php');
 
 	function getUserLogin() {
-		
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		
 		$userReq = new User([
 			'username' => $username,
-			'password'  => $password
+			'password'  => $password,
 		]);
 		
 		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
 		
 		$manager = new UserManager($db);
+		
 		$donnees = $manager->get($userReq);
 		
 		
@@ -22,25 +22,45 @@ require_once('Model/userManager.php');
 		{
 			return $donnees;
 		}
-			else{
-				return $username."<br />".$password;
-			}
+		else
+		{
+			throw new Exception('Mot de passe incorrect.');	
+		}
+		
 	}
 	
 	function addUser()
 	{
-		$user = new User([
-			'username' => $_POST['username2'],
-			'password' => $_POST['password2'],
-			'role' => 'Lecteur'
-		]);
-		
-		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-		
-		$manager = new UserManager($db);
-		$manager->add($user);
-		
-		return $user;
+		$passwordCheck = $_POST['passwordCheck'];
+		if($_POST['password2'] == $_POST['passwordCheck'])
+		{
+			$user = new User([
+				'username' => $_POST['username2'],
+				'password' => $_POST['password2'],
+				'role' => 'Lecteur'
+			]);
+			
+			
+			$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+			
+			$manager = new UserManager($db);
+			
+			$usernameVerify = $manager->get($user);
+			
+			if($usernameVerify->getUsername() != $user->getUsername())
+			{
+				$manager->add($user);
+				return $user;
+			}
+			else
+			{
+				throw new Exception('Pseudo déjà utilisé');
+			}	
+		}
+		else
+		{
+			throw new Exception('Les mots de passe ne sont pas identiques.');
+		}	
 	}
 	
 	function getUserList()

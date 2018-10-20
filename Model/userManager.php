@@ -58,10 +58,15 @@
 			{
 				$req = $this->_db->query('SELECT * FROM users WHERE id = "' . $user->getId() . '"');
 			}
+			
 			$donnees = $req->fetch(PDO::FETCH_ASSOC);
 			
-			
-			return $userInfo = new User($donnees);	
+			if($donnees){
+				return $userInfo = new User($donnees);	
+			}
+			else{
+				throw new Exception('Pseudo incorrect.');
+			}
 		}
 		
 		public function getList()

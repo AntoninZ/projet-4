@@ -100,6 +100,13 @@
 			return $titles;
 		}
 		
+		public function CountPost()
+		{
+			$req = $this->_db->query('SELECT COUNT(id) FROM articles');
+			$donnees = $req->fetch();
+			
+			return $donnees['COUNT(id)'];
+		}
 		
 		
 		// SETTER

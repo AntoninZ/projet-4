@@ -3,7 +3,6 @@
 	<body class="single-post">
 		<header>
 			<div>
-				<a href="backend.php"><i class="far fa-user-circle" title="Connexion"></i></a>
 				<i class="fas fa-bars" onclick="toggleSummary()" title="Sommaire"></i>
 			</div>
 			<h1>Jean Forteroche <em>Un billet simple pour l'Alaska</em></h1>
@@ -40,39 +39,17 @@
 			
 			<hr>
 			<aside class="navigation">
-				<a href=""><i class="fas fa-long-arrow-alt-left"></i> Précédent</a>
-				<a href="">Suivant <i class="fas fa-long-arrow-alt-right"></i></a>
-			</aside>
-		</section>
-		
-		<section class="post">
-			<header>
-				<h3>Commentaires</h3>
-				<hr>
-			</header>
-			
-			<aside>
-				<form method="post" action="?page=postView&amp;id=1&amp;addComment">
-					<label for="username">Pseudo :</label>
-					<input type="text" id="username" name="username" value="<?= $_SESSION['username']; ?>"></input>
-					
-					<label for="content">Commentaire :</label>
-					<textarea id="content" name="content"></textarea>
-					<button type="submit">Ajouter un commentaire</submit>
-				</form>
-			</aside>
-			
-			<article>
-				<?php foreach ($comments as $object)
-				{ ?>
-					<div>
-						<p><?= $object->getUsername(); ?> - <?= date('d/m/Y H:m:s', strtotime($object->getDate())); ?></p>
-						<hr>
-						<p><?= $object->getContent(); ?></p>
-						<a href="?page=postView&amp;id=<?= $object->getIdPost(); ?>&amp;report&idComment=<?= $object->getId(); ?>">Signaler le commentaire</a>
-					</div>
+			<?php
+				if($previous > 0)
+				{
+					echo '<a class="previous" href="?page=postView&id='. $previous .'"><i class="fas fa-long-arrow-alt-left"></i> Précédent</a>';
+				}
 				
-				<?php } ?>
-			</article>
+				if($next <= $count)
+				{
+					echo '<a class="next" href="?page=postView&id='. $next .'">Suivant <i class="fas fa-long-arrow-alt-right"></i></a>';
+				}
+			?>
+			</aside>
 		</section>
 		

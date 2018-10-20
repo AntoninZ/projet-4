@@ -18,15 +18,9 @@ function toggleSummary(){
 	
 }
 
-function signUp(){
-	$('#signUpLink').click(function(){
-		$('#signUp').css('display' , 'block');
-	});
-	
-	$('#closeSignUp').click(function(){
-		$('#signUp').css('display', 'none')
-	});
-};
 
+function slide(up, down){
+	$(up).slideUp();
+	$(down).slideDown();
+}
 
-signUp();
