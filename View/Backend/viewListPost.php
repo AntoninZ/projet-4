@@ -2,7 +2,7 @@
 try {
 	if(isset($_SESSION))
 	{
-		if($_SESSION['role'] == 'admin')
+		if($_SESSION['role'] == 'Administrateur')
 		{
 			ob_start(); ?>
 			<section class="viewList">
@@ -30,12 +30,18 @@ try {
 									<td><a href="?function=edit&amp;id=<?= $object->getId(); ?>"><?= $object->getTitle(); ?></a></td>
 									<td><?= date('d/m/Y', strtotime($object->getDate())); ?></td>
 									<td><a title="Modifier l'article" href="?function=edit&amp;id=<?= $object->getId(); ?>"><i class="fas fa-edit"></i></a></td>
-									<td><a title="Supprimer l'article" href="?function=listPost&amp;delete&amp;id=<?= $object->getId(); ?>"><i class="fas fa-trash-alt"></a></i></td>
+									<td><a title="Supprimer l'article" href="?function=listPost&amp;delete&amp;id=<?= $object->getId(); ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')"><i class="fas fa-trash-alt"></a></i></td>
 							</tr>
+							
+							<?php }
+							if(empty($article)){ ?>
+							
+							<td colspan="4" class="emptyMessage"> Il n'y a aucun article.</td>
 							
 							<?php } ?>
 						</tbody>
 					</table>
+					
 				</article>
 			</section>
 
@@ -51,6 +57,7 @@ try {
 	{
 		throw new Exception('Vous devez être connecté en tant qu\'administrateur pour voir ce contenu');
 	}
+	
 }
 catch( Exception $e)
 {

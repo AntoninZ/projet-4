@@ -51,7 +51,8 @@ function updateChapter() {
 
 function addChapter() {
 	$chapter = new Chapter([
-		'name' => $_POST['name'],
+		'id' => $_GET['id'],
+		'name' => $_POST['name']
 	]);
 	
 	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');

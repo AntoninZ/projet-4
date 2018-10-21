@@ -1,6 +1,5 @@
 <?php 
-
-session_start();
+	session_start();
 
 
 require_once('View/header.php');
@@ -17,6 +16,7 @@ if(isset($_GET['page'])){
 				{
 					$comment = getComment();
 					ReportComment($comment);
+					header('Location: ?page=postView&id='. $_GET['id']);
 				}
 				else if(isset($_GET['signIn']))
 				{
@@ -26,24 +26,31 @@ if(isset($_GET['page'])){
 					
 					$_SESSION['username'] = $user->getUsername();
 					$_SESSION['role'] = $user->getRole();
+					header('Location: ?page=postView&id='. $_GET['id']);
 				}
 				else if(isset($_GET['addComment']))
 				{
 					$comment = addComment();
+					header('Location: ?page=postView&id=1');
 				}
 				else if(isset($_GET['signUp']))
 				{
-					if($_GET['signUp'] == "signUp")
-					{
-						require_once('Controller/userController.php');
-						$newUser = addUser();			
-					}
+					require_once('Controller/userController.php');
+					$newUser = addUser();	
+					header('Location: ?page=postView&id='. $_GET['id']);
+				}
+				else if(isset($_GET['signOut']))
+				{
+					$_SESSION = array();
+					session_unset();
+					session_destroy();
 				}
 			}
 			catch(Exception $e)
 			{
 				$error = 'Erreur: ' .$e->getMessage();
 			}
+			
 			
 			require_once('Controller/PostController.php');
 			require_once('Controller/NavigationController.php');

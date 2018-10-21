@@ -2,7 +2,7 @@
 try {
 	if(isset($_SESSION))
 	{
-		if($_SESSION['role'] == 'admin')
+		if($_SESSION['role'] == 'Administrateur')
 		{
 			ob_start(); ?>
 
@@ -20,12 +20,6 @@ try {
 						<?php foreach ($chapters as $object) { ?>
 							<option value="<?= $object->getId(); ?>"><?= $object->getName(); ?></option>
 						<?php }?>
-						</select>
-						<br />
-						<label for="status">Action :</label>
-						<select id="status" name="status">
-							<option value="publié">Publier</option>
-							<option value="brouillon">Sauvegarder</option>
 						</select>
 						
 						<button type="submit">Ajouter</submit>

@@ -14,16 +14,19 @@
 		
 		public function add(Chapter $chapter)
 		{
-			$req = $this->_db->prepare('INSERT INTO chapters (name) VALUES (:name)');
-			
-			$req->bindValue(':name', $chapter->getName(), PDO::PARAM_STR);
-			
+			$req = $this->_db->prepare('INSERT INTO chapters (id, name) VALUES (:id, :name)');
+			$req->bindValue(':id', $chapter->getId(), PDO::PARAM_INT);
+			$req->bindValue(':name', $chapter->getName(), PDO::PARAM_STR);		
 			$req->execute();
 		}
 		
 		public function delete(Chapter $chapter)
 		{
-			$this->_db->exec('DELETE FROM chapters WHERE id = '.$chapter->getId());
+			$req = $this->_db->prepare('DELETE FROM chapters WHERE id = :id');
+			
+			$req->bindValue(':id', $chapter->getId(), PDO::PARAM_INT);
+			
+			$req->execute();
 		}
 		
 		public function get($id)

@@ -1,0 +1,318 @@
+@media only screen and (max-width: 480px), only screen and (min-width:481px) and (max-width: 620px), only screen and (min-width:621px) and (max-width: 746px), only screen and (min-width:747px) and (max-width: 960px){
+	
+	/* HOMEPAGE */
+	.home-page .billet-simple-alaska {
+		flex-direction: column;
+	}
+	
+	.home-page .billet-simple-alaska article, .home-page .billet-simple-alaska aside {
+		width: 100%;
+	}
+	.home-page .billet-simple-alaska aside{
+		margin-bottom: 134px;
+		position: relative;
+	}
+	.home-page .billet-simple-alaska article div {
+		flex-wrap: wrap;
+	}
+	.home-page .billet-simple-alaska article div img {
+		width : 100%;
+		margin-bottom: 3%;
+	}
+	.home-page .billet-simple-alaska aside h1 {
+		font-size: 2.25em;
+	}
+	.home-page .billet-simple-alaska aside .edition {
+		right: 30%;
+		font-size: 1em;
+	}
+	/* POST VIEW */
+	
+	/* HEADER */
+	.single-post > header h1 {
+		font-size: 1.5em;
+		text-align: left;
+		padding: 2% 0% 5% 4%;
+	}
+	
+	.single-post > header h2 {
+		font-size: 1.2em;
+		padding: 3% 0%;
+	}
+	
+	.single-post > header div {
+		top: 40px;
+		right: 4%;
+	}
+	
+	/* SUMMARY (NAVBAR) */
+	.single-post #summary {
+		width:100%;
+		box-sizing: border-box;
+		padding: 4% 10%;
+		font-size: 1.1em;
+	}
+	
+	.single-post #summary dd {
+		line-height: 2;
+	}
+	
+	/* SECTION POST */
+	.single-post .post, .single-post .comment {
+		padding: 4% 4% 10% 4%;
+
+	}
+	.single-post .comment {
+		padding-bottom: 50%;
+	}
+	
+	.single-post .post header {
+		padding-top: 5%;
+	}
+	
+	.single-post .navigation a {
+		font-size: 1.2em;
+	}
+	
+	/* SECTION COMMENT */
+	.single-post .comment > header {
+		padding: 2% 4%;
+	}
+	
+	.single-post .comment aside {
+		min-height: 400px;
+	}
+	
+	.single-post .comment aside div {
+		width: 100%;
+	}
+	.single-post .comment aside form {
+		align-items: flex-start;
+	}
+	
+	.single-post .comment aside form input {
+		width: 90%;
+		padding: 2%;
+		margin: 2% 2% 4% 2%;
+	}
+	
+	.single-post .comment aside:not(.commentForm) form label {
+		margin-left: 2%;
+		text-align: left;
+	}
+	
+	.single-post .comment aside form button {
+		padding: 2%;
+		width: 90%;
+		margin: 7% auto;
+	}
+	
+	.single-post .comment aside form p {
+		text-align:center;
+		width: 100%;
+	}
+	.single-post .comment aside.commentForm form textarea {
+		height: 175px;
+		width: 90%;
+		margin: 2% auto;
+	}
+	.single-post .comment aside.commentForm form a{
+		text-align:center;
+		display:block;
+		width: 100%;
+	}
+	/* FOOTER */
+	footer {
+		flex-direction: column;
+		padding: 1%;
+		max-height: 300px;
+		height: auto;
+		line-height: 2;
+		box-sizing: border-box;
+		
+	}
+}
+
+
+@media only screen and (min-width:481px) and (max-width: 620px), only screen and (min-width:621px) and (max-width: 746px), only screen and (min-width:747px) and (max-width: 960px){
+	
+	/*HOME PAGE */
+	.home-page .billet-simple-alaska article div img {
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.home-page .billet-simple-alaska aside h1{
+		font-size: 2.75em;
+	}
+	
+	.home-page .billet-simple-alaska aside .edition {
+		right: 35%;
+		font-size: 1.5em;
+	}
+	
+	/* HEADER POST */
+	.single-post > header h1 {
+		padding-bottom: 7%;
+	}
+	.single-post > header div {
+		top: 40px;
+	}
+	
+	
+	/* SUMMARY (NAVIGATION) */
+	
+	.single-post #summary{
+		width: 70%;
+	}
+	/* SECTION COMMENT */
+	.single-post .comment aside div {
+		width: 70%;
+		margin: 0 auto;
+	}
+	.single-post .comment aside form button {
+		width: 50%;
+	}
+}
+@media only screen and (min-width:621px) and (max-width: 746px), only screen and (min-width:747px) and (max-width: 960px){
+	/* POST VIEW */
+	
+	.single-post > header h1{
+		font-size: 2em;
+	}
+	
+	.single-post > header div{
+		top: 60px;
+	}
+	
+	.single-post > header h2 {
+		font-size: 1.5em;
+		padding: 2% 0%;
+	}
+}
+@media only screen and (min-width:747px) and (max-width: 960px){
+	/* HOMEPAGE */
+	.home-page .billet-simple-alaska {
+		flex-direction: row;
+	}
+	
+	.home-page .billet-simple-alaska article, .home-page .billet-simple-alaska aside {
+		width: 50%;
+		margin-bottom: 50px;
+	}
+	.home-page .billet-simple-alaska aside{
+		position: relative;
+	}
+	.home-page .billet-simple-alaska article div {
+		flex-wrap: wrap;
+	}
+	.home-page .billet-simple-alaska article div img {
+		width : 65%;
+		margin-bottom: 3%;
+	}
+	
+	.home-page .billet-simple-alaska aside .edition {
+		right: 22%;
+		font-size: 1.5em;
+	}
+	
+	
+	/* POST VIEW */
+	
+	/* HEADER */
+	.single-post > header h1 {
+		font-size: 2em;
+		text-align: center;
+		padding: 2% 0% 5% 4%;
+	}
+	
+	.single-post > header div {
+		top: 20px;
+		right: 2%;
+	}
+	
+	/* SUMMARY (NAVBAR) */
+	.single-post #summary {
+		width:auto;
+		box-sizing: border-box;
+		padding: 2%;
+		font-size: 1em;
+	}
+	
+	.single-post #summary dd {
+		line-height: 2;
+	}
+	
+	/* SECTION POST */
+	.single-post .post, .single-post .comment {
+		padding: 2% 2% 5% 2%;
+
+	}
+	.single-post .comment {
+		padding-bottom: 15%;
+	}
+	
+	.single-post .post header {
+		padding-top: 5%;
+	}
+	
+	.single-post .navigation a {
+		font-size: 1.2em;
+	}
+	
+	/* SECTION COMMENT */
+	.single-post .comment > header {
+		padding: 1%;
+	}
+	
+	.single-post .comment aside {
+		min-height: 200px;
+	}
+	
+	.single-post .comment aside div {
+		width: 50%;
+	}
+	.single-post .comment aside form {
+		align-items: center;
+	}
+	
+	.single-post .comment aside form input {
+		width: 70%;
+	}
+	
+	.single-post .comment aside form button {
+		padding: 2%;
+		width: 30%;
+		margin: 3% auto;
+	}
+	
+	.single-post .comment aside.commentForm form textarea {
+		height: 135px;
+		width: 95%;
+	}
+	.single-post .comment aside.commentForm form a{
+		text-align:center;
+		display:block;
+		width: 100%;
+	}
+	/* FOOTER */
+	footer {
+		flex-direction: row;
+		padding: 0%;
+		max-height: 75px;
+		height: auto;
+		line-height: 1;
+	}
+	
+	
+}
+@media only screen and (min-width:961px){
+	.single-post {
+		background-image: url(../images/bg-1.jpg);
+		background-attachment: fixed;
+		background-position: center;
+		background-size: cover;
+	}
+}
+

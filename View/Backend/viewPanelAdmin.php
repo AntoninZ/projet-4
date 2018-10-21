@@ -2,12 +2,13 @@
 try {
 	if(isset($_SESSION))
 	{
-		if($_SESSION['role'] == 'admin')
+		if($_SESSION['role'] == 'Administrateur')
 		{
 ?>
 			<body class="panel-admin">
 				<header>
-					<h1>Administration</h1>
+					<h1><a href="index.php">Jean Forteroche - <span>Un billet simple pour l'alaska</span></a></h1>
+					<h2>Admistration</h2>
 				</header>
 				<span class="navBackground"></span>
 				<nav>
@@ -51,8 +52,19 @@ try {
 								</a>
 							</li>
 						</ul>
+						
+						<?php if(!empty($notification)){ ?>
+							
+							<div id="notification">
+								<h3>Notification</h3>
+								<p><?= $notification ?></p>
+							</div>
+							
+						<?php } ?>
+						
 					</div>
 				</nav>
+				
 				
 				
 				<?php 

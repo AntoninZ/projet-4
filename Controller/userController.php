@@ -3,58 +3,61 @@
 require_once('Model/userManager.php');
 
 	function getUserLogin() {
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		
 		$userReq = new User([
-			'username' => $username,
-			'password'  => $password,
+			'username' => $_POST['username'],
+			'password'  => $_POST['password']
 		]);
+		
 		
 		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
 		
 		$manager = new UserManager($db);
+		$donnees = $manager->verify($userReq);
 		
-		$donnees = $manager->get($userReq);
-		
-		
-		if(password_verify($password, $donnees->getPassword()))
+		if($donnees != FALSE)
 		{
-			return $donnees;
+			if(password_verify($_POST['password'], $donnees->getPassword()))
+			{
+				return $donnees;
+			}
+			else
+			{
+				throw new Exception('Pseudo ou mot de passe incorrect.');	
+			}
 		}
 		else
 		{
-			throw new Exception('Mot de passe incorrect.');	
+			throw new Exception('Pseudo ou mot de passe incorrect.');
 		}
-		
 	}
 	
 	function addUser()
 	{
 		$passwordCheck = $_POST['passwordCheck'];
-		if($_POST['password2'] == $_POST['passwordCheck'])
-		{
+		
+		if($_POST['newPassword'] == $_POST['passwordCheck'])
+		{			
+			$username = ucfirst(strtolower($_POST['newUsername']));
+			$password = $_POST['newPassword'];
+			
 			$user = new User([
-				'username' => $_POST['username2'],
-				'password' => $_POST['password2'],
+				'username' => $username,
+				'password' => $password,
 				'role' => 'Lecteur'
 			]);
 			
-			
 			$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-			
 			$manager = new UserManager($db);
+			$usernameVerify = $manager->verify($user);
 			
-			$usernameVerify = $manager->get($user);
-			
-			if($usernameVerify->getUsername() != $user->getUsername())
+			if($usernameVerify != FALSE)
 			{
-				$manager->add($user);
-				return $user;
+				throw new Exception('Ce pseudo est déjà utilisé.');
 			}
 			else
 			{
-				throw new Exception('Pseudo déjà utilisé');
+				$manager->add($user);
+				return $user;
 			}	
 		}
 		else
@@ -71,29 +74,77 @@ require_once('Model/userManager.php');
 		return $users;
 	}
 	
-	function getUserInfo()
+	function getUser()
 	{
-		$userReq = new User([
-			'id' => $_GET['id']
-		]);
-		
-		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-		$manager = new UserManager($db);
-		$user = $manager->get($userReq);
-		
-		return $user;
+		if(isset($_GET['id']))
+		{	
+				$userReq = new User(['id' => intval($_GET['id'])]);
+				
+				$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+				$manager = new UserManager($db);
+				$user = $manager->get($userReq);
+				
+				return $user;			
+		}
+		else
+		{
+			throw new Exception('Erreur : l\'identifiant du membre n\'est pas spécifié.');
+		}
 	}
 	
 	function updateUser()
 	{
-		$userUpdate = new User([
-		'id' => $_GET['id'],
-		'username' => $_POST['username'],
-		'role' => $_POST['role']
-		]);
 		
-		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-		$manager = new UserManager($db);
-		
-		$manager->update($userUpdate);
+		if(isset($_GET['id']))
+		{
+			if(isset($_POST['username']) && !empty($_POST['username']))
+			{
+				if(isset($_POST['role']))
+				{	
+					if($_POST['role'] == 'Administrateur' || $_POST['role'] == 'Lecteur')
+					{
+						$userUpdate = new User([
+						'id' => intval($_GET['id']),
+						'username' => $_POST['username'],
+						'role' => $_POST['role']
+						]);
+						
+						$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+						$manager = new UserManager($db);
+						$manager->update($userUpdate);
+					}
+					else
+					{
+						throw new Exception('Erreur : le rôle du membre est erroné.');
+					}
+				}
+				else
+				{
+					throw new Exception('Erreur : le champs "rôle" n\'a pas pu être récupéré.');
+				}
+			}
+			else
+			{
+				throw new Exception('Erreur : le champs "pseudo" est vide ou n\'a pas pu être récupéré.');
+			}
+		}
+		else
+		{
+			throw new Exception('Erreur : l\'identifiant de l\'utilisateur est erroné.');
+		}
+	}
+	
+	function deleteUser()
+	{
+		if(isset($_GET['id']))
+		{
+			$user = new User(['id' => intval($_GET['id'])]);
+			$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+			$manager = new UserManager($db);
+			return $user = $manager->delete($user);
+		}
+		else
+		{
+			throw new Exception('Erreur : l\'identifiant du membre n\'est pas spécifié.');
+		}
 	}

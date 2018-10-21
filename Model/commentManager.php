@@ -41,17 +41,11 @@
 		
 		public function delete(Comment $comment)
 		{
-			$this->_db->exec('DELETE FROM comments WHERE id =' .$comment->getId());
-		}
-		
-		public function getModerate($moderate)
-		{
-			$moderate = (int) $moderate;
+			$req = $this->_db->prepare('DELETE FROM comments WHERE id = :id');
 			
-			$req = $this->_db->query('SELECT member.name, comments.content, comments.moderate FROM members, comments WHERE comments.moderate = '.$moderate);
-			$donnees = $req->fetch(PDO::FETCH_ASSOC);
+			$req->bindValue(':id', $user->getId(), PDO::PARAM_INT);
 			
-			return new comment($donnees);
+			$req->execute();
 		}
 		
 		public function getList($id)
@@ -78,15 +72,15 @@
 		public function getListModerate()
 		{
 			$comments = [];
-			
 			$req = $this->_db->query('SELECT * FROM comments WHERE moderate = 1 ORDER BY reportCount DESC');
 			
-			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
-			{
-				$comments[] = new comment($donnees);
-			}
 			
-			return $comments;
+				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+				{
+					$comments[] = new comment($donnees);
+				}
+				
+				return $comments;
 		}
 		
 		public function update(comment $comment)

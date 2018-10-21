@@ -1,6 +1,7 @@
 <body class="panel-connexion">
 	<header>
-		<h1>Connexion</h1>
+		<h1><a href="index.php">Jean Forteroche - <span>Un billet simple pour l'alaska</span></a></h1>
+		<h2>Accès à l'administration</h2>
 	</header>
 	
 	<section>
@@ -15,6 +16,12 @@
 				<input type="password" id="password" name="password" required ></input>
 				
 				<button type="submit">Se connecter</button>
+				
+				<?php if(!empty($message)){ ?>
+				
+				<p class="error"><?= $message ?></p>
+				
+				<?php } ?>
 			</form>
 		</article>
 	</section>

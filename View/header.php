@@ -8,6 +8,7 @@
         <link rel="icon" type="image/png" href="" />
 		<link rel="stylesheet" type="text/css" href="Public/css/frontend.css">
 		<link rel="stylesheet" type="text/css" href="Public/css/backend.css">
-		<!-- <link rel="stylesheet" type="text/css" href="mediasqueries.css"> -->
+		<link rel="stylesheet" type="text/css" href="Public/css/mediasqueriesFrontend.css">
+		<link rel="stylesheet" type="text/css" href="Public/css/mediasqueriesBackend.css">
 		
     </head>

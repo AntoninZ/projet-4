@@ -2,7 +2,7 @@
 try {
 	if(isset($_SESSION))
 	{
-		if($_SESSION['role'] == 'admin')
+		if($_SESSION['role'] == 'Administrateur')
 		{
 			ob_start(); ?>
 
@@ -17,8 +17,8 @@ try {
 						<select id="role" name="role">
 							<option value="<?= $user->getRole() ?>"><?= $user->getRole(); ?></option>
 							<option disabled></option>
-							<option value="admin">Administrateur</option>
-							<option value="member">Lecteur</option>
+							<option value="Administrateur">Administrateur</option>
+							<option value="Lecteur">Lecteur</option>
 						</select>
 						
 						<button type="submit">Valider</button>

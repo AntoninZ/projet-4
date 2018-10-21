@@ -2,7 +2,7 @@
 try {
 	if(isset($_SESSION))
 	{
-		if($_SESSION['role'] == 'admin')
+		if($_SESSION['role'] == 'Administrateur')
 		{
 			ob_start(); ?>
 

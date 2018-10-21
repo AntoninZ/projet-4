@@ -6,7 +6,9 @@ function getListComment()
 	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
 	$manager = new commentManager($db);
 	$comments = $manager->getListModerate();
+	
 	return $comments;
+	
 }
 
 function addComment()
@@ -14,56 +16,109 @@ function addComment()
 	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
 	$manager = new commentManager($db);
 	
-	$username = $_SESSION['username'];
-	
-	$idUser = $manager->findIdUser($username);
-	
-	$comment = new Comment([
-		'idPost' => $_GET['id'],
-		'idUser' => $idUser,
-		'content' => $_POST['content'],
-		'moderate' => '1',
-		'reportCount' => '0'
-	]);		
-	
-	$manager->add($comment);
-	
-	return $idUser;
+	if(isset($_SESSION['username']))
+	{
+		$username = $_SESSION['username'];
+		$idUser = $manager->findIdUser($username);
+		
+		if(!empty($idUser))
+		{
+			if(isset($_GET['id']))
+			{
+				if(isset($_POST['content']))
+				{
+					if(!empty($_POST['content']))
+					{
+						$comment = new Comment([
+							'idPost' => intval($_GET['id']),
+							'idUser' => $idUser,
+							'content' => $_POST['content'],
+							'moderate' => '1',
+							'reportCount' => '0'
+						]);		
+					
+						$manager->add($comment);
+						
+						return $idUser;
+					}
+					else
+					{
+						throw new Exception('Erreur: Le champs "commentaire" est vide.');
+					}
+				}
+				else
+				{
+					throw new Exception('Erreur: Le champs "commentaire" n\'a pas pu être récupéré.');
+				}
+			}
+			else
+			{				
+				throw new Exception('Erreur : L\'identifiant de l\'article est erroné ou inexistant.');
+			}
+		}
+		else
+		{
+			throw new Exception('Erreur : Votre identifiant d\'utilisateur est introuvable.');
+		}
+	}
+	else
+	{
+		throw new Exception('Erreur : Vous devez être connecté pour ajouter un commentaire.');
+	}
 }
 
 function validateComment()
 {
-	$comment = new Comment([
-		'id' => $_GET['id'],
-		'moderate' => '0',
-		'reportCount' => '0'
-	]);
-	
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-	$manager = new commentManager($db);
-	
-	$manager->Update($comment);
+	if(isset($_GET['id']) && !empty($_GET['id']))
+	{
+		$comment = new Comment([
+			'id' => intval($_GET['id']),
+			'moderate' => '0',
+			'reportCount' => '0'
+		]);
+		
+		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$manager = new commentManager($db);
+		
+		$manager->Update($comment);
+	}
+	else
+	{
+		throw new Exception('Erreur : L\'identifiant du commentaire est érroné ou non spécifié.');
+	}
 	
 }
 
 function deleteComment()
 {
-	$commentDelete = new Comment([
-		'id' => $_GET['id']
-	]);
-	
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-	$manager = new CommentManager($db);
-	$manager->delete($commentDelete);
+	if(isset($_GET['id']) && !empty($_GET['id']))
+	{
+		$commentDelete = new Comment(['id' => intval($_GET['id'])]);
+		
+		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$manager = new CommentManager($db);
+		$manager->delete($commentDelete);
+	}
+	else
+	{
+		throw new Exception('Erreur : L\'identifiant du commentaire est érroné ou non spécifié.');
+	}
 }
 
 function getComment()
 {
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-	$manager = new CommentManager($db);
-	$id = $_GET['idComment'];
-	$comment = $manager->get($id);
-	return $comment;
+	if(isset($_GET['id']) && !empty($_GET['id']))
+	{
+		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$manager = new CommentManager($db);
+		$id = intval($_GET['idComment']);
+		$comment = $manager->get($id);
+		return $comment;
+	}
+	else
+	{
+		throw new Exception('Erreur : L\'identifiant du commentaire est érroné ou non spécifié.');
+	}
 }
 
 function reportComment(Comment $comment)
@@ -81,9 +136,17 @@ function reportComment(Comment $comment)
 
 function getListCommentPost()
 {
-	$id = (int) $_GET['id'];
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-	$manager = new commentManager($db);
-	$comments = $manager->getList($id);
-	return $comments;
+	if(isset($_GET['id']) && !empty($_GET['id']))
+	{
+		$id = intval($_GET['id']);
+		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$manager = new commentManager($db);
+		$comments = $manager->getList($id);
+		
+		return $comments;
+	}
+	else
+	{
+		throw new Exception('Erreur : L\'identifiant du commentaire est érroné ou non spécifié.');
+	}
 }

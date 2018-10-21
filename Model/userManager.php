@@ -12,73 +12,76 @@
 		
 		public function add(User $user)
 		{
-			
 			$req = $this->_db->prepare('INSERT INTO users(username, password, role) VALUES (:username, :password, :role)');
-			
-			$req->bindValue(':username', $user->getUsername());
-			$req->bindValue(':password', password_hash($user->getPassword(), PASSWORD_DEFAULT));
-			$req->bindValue(':role', $user->getRole());
-			
-			$req->execute();
-			
+			$req->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
+			$req->bindValue(':password', password_hash($user->getPassword(), PASSWORD_DEFAULT), PDO::PARAM_STR);
+			$req->bindValue(':role', $user->getRole(), PDO::PARAM_STR);
+			$req->execute();	
 		}
 		
 		public function delete(User $user)
 		{
-			$req = $this->_db->prepare('DELETE * FROM users WHERE id = :id');
-			
-			$req->bindValue(':id', $user->getId());
-			
+			$req = $this->_db->prepare('DELETE FROM users WHERE id = :id');
+			$req->bindValue(':id', $user->getId(), PDO::PARAM_INT);
 			$req->execute();
-			
-			return true;
 		}
-		
 		
 		public function update(User $user)
 		{
 			$req = $this->_db-> prepare('UPDATE users SET username = :username, role = :role WHERE id = :id');
-			
 			$req->bindValue(':id', $user->getId(), PDO::PARAM_INT);
 			$req->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
 			$req->bindValue(':role', $user->getRole(), PDO::PARAM_STR);
 			$req->execute();
-			
-			return true;
 		}
 		
 		public function get(User $user)
 		{	
-			$verify = $user->getUsername();
-			if(isset($verify))
-			{
-				$req = $this->_db->query('SELECT * FROM users WHERE username = "' . $user->getUsername() . '"');
-			}
-			else
-			{
-				$req = $this->_db->query('SELECT * FROM users WHERE id = "' . $user->getId() . '"');
-			}
+			$req = $this->_db->prepare('SELECT * FROM users WHERE id = :id');
+			$req->bindValue(':id', $user->getId(), PDO::PARAM_INT);
+			$req->execute();
 			
 			$donnees = $req->fetch(PDO::FETCH_ASSOC);
 			
-			if($donnees){
+			if($donnees)
+			{
 				return $userInfo = new User($donnees);	
 			}
-			else{
-				throw new Exception('Pseudo incorrect.');
+			else
+			{
+				throw new Exception('Ce membre n\'existe pas (identifiant érroné). ');
+			}
+		}
+		
+		public function verify(User $user)
+		{
+			$req = $this->_db->prepare('SELECT * FROM users WHERE username = :username');
+			$req->bindValue(':username', $user->getUsername(), PDO::PARAM_STR);
+			$req->execute();
+			
+			$donnees = $req->fetch(PDO::FETCH_ASSOC);
+			
+			if(!empty($donnees))
+			{
+				return $user = new User($donnees);
+			}
+			else
+			{
+				return false;
 			}
 		}
 		
 		public function getList()
 		{
+			
 			$users = [];
 			
-			$req = $this->_db->query('SELECT * FROM users ORDER BY id ASC');
+			$req = $this->_db->query('SELECT * FROM users ORDER BY id LIMIT 18446744073709551615 OFFSET 2 ');
 			
 			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 			{
 				$users[] = new User($donnees);
-			}
+			}	
 			
 			return $users;
 		}

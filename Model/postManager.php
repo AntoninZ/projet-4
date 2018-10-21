@@ -19,24 +19,31 @@
 			$req->bindValue(':id', $article->getId(), PDO::PARAM_INT);
 			$req->bindValue(':title', $article->getTitle(), PDO::PARAM_STR);
 			$req->bindValue(':content', $article->getContent(), PDO::PARAM_STR);
-			$req->bindValue(':idChapter', $article->getIdChapter(), PDO::PARAM_INT);
-			
+			$req->bindValue(':idChapter', $article->getIdChapter(), PDO::PARAM_INT);			
 			$req->execute();
 		}
 		
-		public function delete($id)
+		public function delete(Post $article)
 		{
-			$this->_db->exec('DELETE FROM articles WHERE id = '.$id);
+			$req = $this->_db->prepare('DELETE FROM articles WHERE id = :id');
+			$req->bindValue(':id', $article->getId(), PDO::PARAM_INT);			
+			$req->execute();
 		}
 		
 		public function get($id)
 		{
-			$id = (int) $id;
-			
+			$id = (int) $id;			
 			$req = $this->_db->query('SELECT articles.*, chapters.name FROM articles INNER JOIN chapters ON articles.idChapter = chapters.id AND articles.id = '.$id);
 			$donnees = $req->fetch(PDO::FETCH_ASSOC);
 			
-			return $article = new Post($donnees);
+			if($donnees)
+			{
+				return $article = new Post($donnees);
+			}
+			else
+			{
+				throw new Exception('Cet article n\'existe pas (identifiant erroné).');
+			}
 		}
 		
 		

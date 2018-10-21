@@ -2,7 +2,7 @@
 try {
 	if(isset($_SESSION))
 	{
-		if($_SESSION['role'] == 'admin')
+		if($_SESSION['role'] == 'Administrateur')
 		{
 			ob_start(); ?>
 			<section class="viewList">
@@ -27,8 +27,13 @@ try {
 							<tr>
 									<td><a href="?function=editChapter&amp;id=<?= $object->getId(); ?>"><?= $object->getName(); ?></a></td>
 									<td><a title="Modifier l'article" href="?function=editChapter&amp;id=<?= $object->getId(); ?>"><i class="fas fa-edit"></i></a></td>
-									<td><a title="Supprimer l'article" href="?function=listChapter&amp;delete&amp;id=<?= $object->getId(); ?>"><i class="fas fa-trash-alt"></a></i></td>
+									<td><a title="Supprimer l'article" href="?function=listChapter&amp;delete&amp;id=<?= $object->getId(); ?>" onclick="return confirm('Voulez-vous vraiment supprimer ce chapître ?')"><i class="fas fa-trash-alt"></a></i></td>
 							</tr>
+							
+							<?php }
+							if(empty($chapters)){ ?>
+							
+							<td colspan="4" class="emptyMessage"> Il n'y a aucun chapitre.</td>
 							
 							<?php } ?>
 						</tbody>

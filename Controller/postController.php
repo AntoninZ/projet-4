@@ -57,10 +57,11 @@ function lastPostId(){
 
 function deletePost()
 {	
-	$id = $_GET['id'];
+	$article = new Post(['id' => $_GET['id']]);
+
 	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
 	$manager = new PostManager($db);
-	$manager->delete($id);
+	$manager->delete($article);
 }
 
 function CountPost()

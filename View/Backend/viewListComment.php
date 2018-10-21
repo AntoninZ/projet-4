@@ -2,7 +2,7 @@
 try {
 	if(isset($_SESSION))
 	{
-		if($_SESSION['role'] == 'admin')
+		if($_SESSION['role'] == 'Administrateur')
 		{
 			ob_start(); ?>
 			<section class="viewList">
@@ -31,9 +31,15 @@ try {
 									<td><a title="Supprimer le commentaire" href="?function=moderate&amp;delete&amp;id=<?= $object->getId(); ?>"><i class="fas fa-trash-alt"></a></i></td>
 							</tr>
 							
+							<?php }
+							if(empty($comments)){ ?>
+							
+							<td colspan="4" class="emptyMessage"> Il n'y a aucun commentaire à modérer.</td>
+							
 							<?php } ?>
 						</tbody>
 					</table>
+					
 				</article>
 			</section>
 

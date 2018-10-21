@@ -1,47 +1,62 @@
 /* HEADER - GLOBAL */
-.panel-admin > header, .panel-member > header, .panel-connexion > header {
+.panel-admin > header, .panel-connexion > header {
+	width: 100%;
+}
+.panel-admin header h1, .panel-connexion > header h1 {
 	width: 100%;
 	background-color: #0e4250;
 	font-weight: 600;
 	box-shadow: 0px 1px 10px #000;
 	position: relative;
 	z-index: 10;
+	padding: 1% 0%;
+	text-align:center;
+}
+.panel-admin > header h2, .panel-connexion > header h2 {
+	background-color: #286f82;
+	padding: 1% 0;
+	text-align: center;
+	box-shadow: 0px 3px 10px #000;
+	position: relative;
+	z-index: 9;
 	color: #fff;
 }
-.panel-admin header h1, .panel-member > header h1, .panel-connexion > header h1 {
-	padding: 1% 0%;
-	text-align: center;
+.panel-admin > header h1 a, .panel-connexion > header h1 a {
+	text-decoration: none;
+	color: #fff;
 }
-
+.panel-admin > header h1 span, .panel-connexion > header h1 span {
+	font-style: italic;
+	font-weight: 300;
+}
 
 /* VIEW CONNEXION */
 body.panel-connexion section article {
-	display: flex;
-	flex-wrap: wrap;
 	margin: 4% auto;
 	width: 50%;
 }
-.panel-connexion form#signUp, .panel-connexion form#signIn {
-	width: 50%;
+.panel-connexion form#signIn {
+	text-align:center;
 }
 .panel-connexion hr {
 	width: 50%;
-	margin: 2% 0 5% 0;
+	margin: 2% auto 5% auto;
 }
 .panel-connexion section article label {
 	width: 200px;
 	display: block;
-	margin: 2% 0;
+	margin: 2% auto;
 	font-family: sans-serif;
 }
 .panel-connexion section article input {
 	width: 200px;
 	display: block;
-	margin: 0 0 5% 0;
+	margin: 0 auto 5% auto;
 	padding: 1%;
 	font-family: sans-serif;
 	border-radius: 5px;
 	border: 1px solid #286f82;
+	text-align: center;
 }
 .panel-connexion section article button {
 	min-width: 100px;
@@ -50,6 +65,7 @@ body.panel-connexion section article {
 	color: #fff;
 	font-family: sans-serif;
 	border: 1px solid #0e4250;
+	margin: 0 auto;
 	padding: 1%;
 	border-radius: 5px;
 	cursor: pointer;
@@ -81,7 +97,7 @@ body.panel-admin {
 	bottom: 0;
 	z-index: 9;
 }
-.panel-admin nav div {
+.panel-admin nav > div {
 	position: fixed;
 	margin-bottom: 3%;
 	width: 20%;
@@ -115,11 +131,38 @@ body.panel-admin {
 	margin-right: 6%;
 }
 
+.panel-admin nav div div#notification {
+    margin: 10% 0%;
+    text-align: center;
+    padding: 0% 10%;
+    box-sizing: border-box;
+}
+
+.panel-admin nav div div#notification h3 {
+    background-color: #0e4250;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 1em;
+    padding: 1% 0%;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.panel-admin nav div div#notification p {
+    font-family: sans-serif;
+    background-color: #fff;
+    margin: 0;
+    font-size: 0.9em;
+    border-radius: 0px 0px 5px 5px;
+    padding: 4% 0%;
+}
+
+
+
 /* GLOBAL SECTION */
 .panel-admin section {
 	width: 70%;
 	margin: 0 auto;
-	padding: 4% 0% 4% 0%;
+	padding: 4% 0% 10% 0%;
 }
 /* VIEW ADMIN BOARD */
 section.viewAdminBoard h2 {
@@ -165,7 +208,7 @@ section.viewPost article form textarea {
 }
 section.viewPost article form label{
 	display: inline-block;
-	width: 100px;
+	width: 175px;
 	margin-top: 2%;
 	font-family: sans-serif;
 }
@@ -195,7 +238,7 @@ section.viewPost article form button[type="submit"]:hover{
 }
 
 
-/* VIEW LIST POST */
+/* VIEW LIST */
 
 section.viewList a {
 	color: #000;
@@ -217,7 +260,10 @@ section.viewList article tr th, section.viewList article tr td {
 	border-collapse: collapse;
 	padding: 1% 0;
 }
-
+section.viewList article tr td.emptyMessage {
+	font-size: 1.2em;
+	font-family: sans-serif;
+}
 section.viewList article tr th {
 	background-color: #286f82;
 	color: #fff;
