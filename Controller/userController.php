@@ -1,6 +1,7 @@
 <?php
 
 require_once('Model/userManager.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/connectController.php');
 
 	function getUserLogin() {
 		$userReq = new User([
@@ -9,7 +10,7 @@ require_once('Model/userManager.php');
 		]);
 		
 		
-		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$db = connect();
 		
 		$manager = new UserManager($db);
 		$donnees = $manager->verify($userReq);
@@ -46,7 +47,7 @@ require_once('Model/userManager.php');
 				'role' => 'Lecteur'
 			]);
 			
-			$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+			$db = connect();
 			$manager = new UserManager($db);
 			$usernameVerify = $manager->verify($user);
 			
@@ -68,7 +69,7 @@ require_once('Model/userManager.php');
 	
 	function getUserList()
 	{
-		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$db = connect();
 		$manager = new UserManager($db);
 		$users = $manager->getList();
 		return $users;
@@ -80,7 +81,7 @@ require_once('Model/userManager.php');
 		{	
 				$userReq = new User(['id' => intval($_GET['id'])]);
 				
-				$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+				$db = connect();
 				$manager = new UserManager($db);
 				$user = $manager->get($userReq);
 				
@@ -109,7 +110,7 @@ require_once('Model/userManager.php');
 						'role' => $_POST['role']
 						]);
 						
-						$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+						$db = connect();
 						$manager = new UserManager($db);
 						$manager->update($userUpdate);
 					}
@@ -139,7 +140,7 @@ require_once('Model/userManager.php');
 		if(isset($_GET['id']))
 		{
 			$user = new User(['id' => intval($_GET['id'])]);
-			$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+			$db = connect();
 			$manager = new UserManager($db);
 			return $user = $manager->delete($user);
 		}

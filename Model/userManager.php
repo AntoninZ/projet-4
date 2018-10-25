@@ -1,5 +1,5 @@
 <?php
-	require_once("Model/user.php");
+	require_once $_SERVER['DOCUMENT_ROOT'].("/Model/user.php");
 	
 	class UserManager
 	{

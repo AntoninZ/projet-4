@@ -1,9 +1,10 @@
 <?php 
-require_once('Model/CommentManager.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Model/commentManager.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/connectController.php');
 
 function getListComment()
 {
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new commentManager($db);
 	$comments = $manager->getListModerate();
 	
@@ -13,7 +14,7 @@ function getListComment()
 
 function addComment()
 {
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new commentManager($db);
 	
 	if(isset($_SESSION['username']))
@@ -77,7 +78,7 @@ function validateComment()
 			'reportCount' => '0'
 		]);
 		
-		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$db = connect();
 		$manager = new commentManager($db);
 		
 		$manager->Update($comment);
@@ -95,7 +96,7 @@ function deleteComment()
 	{
 		$commentDelete = new Comment(['id' => intval($_GET['id'])]);
 		
-		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$db = connect();
 		$manager = new CommentManager($db);
 		$manager->delete($commentDelete);
 	}
@@ -109,7 +110,7 @@ function getComment()
 {
 	if(isset($_GET['id']) && !empty($_GET['id']))
 	{
-		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$db = connect();
 		$manager = new CommentManager($db);
 		$id = intval($_GET['idComment']);
 		$comment = $manager->get($id);
@@ -123,7 +124,7 @@ function getComment()
 
 function reportComment(Comment $comment)
 {
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new CommentManager($db);
 	
 	$reportCount = intval($comment->getReportCount()) + 1;
@@ -139,7 +140,7 @@ function getListCommentPost()
 	if(isset($_GET['id']) && !empty($_GET['id']))
 	{
 		$id = intval($_GET['id']);
-		$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+		$db = connect();
 		$manager = new commentManager($db);
 		$comments = $manager->getList($id);
 		

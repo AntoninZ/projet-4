@@ -1,10 +1,11 @@
 <?php
-require_once('Model/postManager.php');
-require_once('Model/ChapterManager.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Model/postManager.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Model/chapterManager.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/connectController.php');
 
 function getNavigation()
 {
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	
 	$postManager = new PostManager($db);
 	$chapterManager = new ChapterManager($db);

@@ -1,5 +1,5 @@
 <?php
-	require_once("post.php");
+	require_once $_SERVER['DOCUMENT_ROOT'].("/Model/post.php");
 	
 	class PostManager
 	{

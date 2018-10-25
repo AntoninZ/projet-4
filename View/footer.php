@@ -1,7 +1,7 @@
 		<footer>
 			<p>Jean Forteroche - Tous droits réservés - 2018 <i class="far fa-copyright"></i></p>
-			<a href="">Mentions légales</a>
-			<a href="">Contact</a>
+			<a href="?page=legalNotice">Mentions légales</a>
+			<a href="?page=contact">Contact</a>
 			<a href="backend.php">Administration</a>
 		</footer>
 	</body>

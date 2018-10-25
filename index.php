@@ -1,8 +1,11 @@
 <?php 
-	session_start();
+
+ini_set('display_errors',1);
+
+session_start();
 
 
-require_once('View/header.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/View/header.php');
 
 if(isset($_GET['page'])){
 	
@@ -10,7 +13,10 @@ if(isset($_GET['page'])){
 	
 	try {
 		if($_GET['page'] == 'postView' && isset($_GET['id'])){
-			require_once('Controller/commentController.php');
+			
+			
+			require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/commentController.php');
+			
 			try {
 				if(isset($_GET['report']))
 				{
@@ -20,7 +26,7 @@ if(isset($_GET['page'])){
 				}
 				else if(isset($_GET['signIn']))
 				{
-					require_once('Controller/userController.php');
+					require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/userController.php');
 
 					$user = getUserLogin();
 					
@@ -35,7 +41,7 @@ if(isset($_GET['page'])){
 				}
 				else if(isset($_GET['signUp']))
 				{
-					require_once('Controller/userController.php');
+					require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/userController.php');
 					$newUser = addUser();	
 					header('Location: ?page=postView&id='. $_GET['id']);
 				}
@@ -52,8 +58,8 @@ if(isset($_GET['page'])){
 			}
 			
 			
-			require_once('Controller/PostController.php');
-			require_once('Controller/NavigationController.php');
+			require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/postController.php');
+			require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/navigationController.php');
 			
 			$count = CountPost();
 			
@@ -68,8 +74,8 @@ if(isset($_GET['page'])){
 					$comments = getListCommentPost();
 					
 						
-					require_once('View/frontEnd/postView.php');
-					require_once('View/frontEnd/viewComment.php');		
+					require_once $_SERVER['DOCUMENT_ROOT'].('/View/Frontend/postView.php');
+					require_once $_SERVER['DOCUMENT_ROOT'].('/View/Frontend/viewComment.php');		
 				}
 				else {
 					throw new Exception('Ce billet n\'existe pas !');
@@ -77,8 +83,20 @@ if(isset($_GET['page'])){
 			}
 			catch(Exception $e) {
 				echo 'Erreur : ' . $e->getMessage();
-				require_once('View/viewError.php');
+				require_once $_SERVER['DOCUMENT_ROOT'].('/View/viewError.php');
 			}
+		}
+		else if($_GET['page'] == 'legalNotice')
+		{
+			require_once $_SERVER['DOCUMENT_ROOT'].('/View/Frontend/viewLegalNotice.php');
+		}
+		else if($_GET['page'] == "contact")
+		{
+			if(isset($_GET['send'])){
+				require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/contactController.php');
+				sendMail();
+			}
+			require_once $_SERVER['DOCUMENT_ROOT'].('/View/Frontend/viewContact.php');
 		}
 		else
 		{
@@ -88,13 +106,13 @@ if(isset($_GET['page'])){
 	catch(Exception $e) 
 	{
 		echo 'Erreur :' .$e->getMessage();
-		require_once('View/viewError.php');
+		require_once $_SERVER['DOCUMENT_ROOT'].('/View/viewError.php');
 	}
 }
 
 // HOMEPAGE
 else {
-	require_once('View/frontend/viewHomepage.php');
+	require_once $_SERVER['DOCUMENT_ROOT'].('/View/Frontend/viewHomepage.php');
 }
 
-require_once('View/footer.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/View/footer.php');

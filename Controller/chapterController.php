@@ -1,8 +1,10 @@
 <?php
-require_once('Model/ChapterManager.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/connectController.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Model/ChapterManager.php');
+
 
 function getChapter() {		
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new ChapterManager($db);		
 	
 	$id = $_GET['id'];
@@ -12,7 +14,7 @@ function getChapter() {
 }
 
 function getChapterNameById($id) {
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new ChapterManager($db);		
 
 	$chapter = $manager->get($id);
@@ -22,7 +24,7 @@ function getChapterNameById($id) {
 }
 
 function getChapterInfo($idChapter) {
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new ChapterManager($db);		
 	
 	$id = $idChapter;
@@ -32,7 +34,7 @@ function getChapterInfo($idChapter) {
 }
 
 function getListChapter() {
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new ChapterManager($db);
 	$chapters = $manager->getListChapter();
 	return $chapters;
@@ -44,7 +46,7 @@ function updateChapter() {
 		'name' => $_POST['name'],
 	]);
 	
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new chapterManager($db);
 	$chapter = $manager->update($chapterUpdate);
 }
@@ -55,14 +57,14 @@ function addChapter() {
 		'name' => $_POST['name']
 	]);
 	
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new ChapterManager($db);
 	$manager->add($chapter);
 }
 
 function ChapterCount() {
 	
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new ChapterManager($db);
 	$ChapterCount = $manager->getCountChapter();
 	
@@ -70,7 +72,7 @@ function ChapterCount() {
 }
 
 function lastChapterId(){
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new ChapterManager($db);		
 	
 	$id = $manager->getLastChapterId();
@@ -82,7 +84,7 @@ function deleteChapter() {
 		'id' => $_GET['id']
 	]);
 	
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new chapterManager($db);
 	$chapter = $manager->delete($chapterDelete);
 }

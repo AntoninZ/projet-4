@@ -1,5 +1,5 @@
 <?php
-	require_once("chapter.php");
+	require_once $_SERVER['DOCUMENT_ROOT'].('/Model/chapter.php');
 	
 	class ChapterManager
 	{

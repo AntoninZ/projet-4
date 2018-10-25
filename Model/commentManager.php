@@ -1,5 +1,6 @@
 <?php
-	require_once("comment.php");
+
+	require_once $_SERVER['DOCUMENT_ROOT'].("/Model/comment.php");
 	
 	class CommentManager
 	{
@@ -100,7 +101,3 @@
 		}
 
 	}
-	
-	
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
-	$manager = new CommentManager($db);

@@ -1,8 +1,10 @@
 <?php
-require_once('Model/postManager.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/connectController.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Model/postManager.php');
+
 
 function getPost() {		
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new PostManager($db);		
 	$id = $_GET['id'];		
 	$article = $manager->get($id);
@@ -10,7 +12,7 @@ function getPost() {
 }
 
 function getList() {
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new PostManager($db);
 	$article = $manager->getList();
 	return $article;
@@ -25,7 +27,7 @@ function updatePost() {
 		'idChapter' => $_POST['idChapter'],
 	]);
 	
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new PostManager($db);
 	$article = $manager->update($articleUpdate);
 }
@@ -40,7 +42,7 @@ function addPost() {
 		'idChapter' => $_POST['idChapter'],
 	]);
 	
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new PostManager($db);
 	$manager->add($article);
 	
@@ -48,7 +50,7 @@ function addPost() {
 }
 
 function lastPostId(){
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new PostManager($db);		
 	
 	$article = $manager->getLastPostId();
@@ -59,14 +61,14 @@ function deletePost()
 {	
 	$article = new Post(['id' => $_GET['id']]);
 
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new PostManager($db);
 	$manager->delete($article);
 }
 
 function CountPost()
 {
-	$db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', '');
+	$db = connect();
 	$manager = new PostManager($db);		
 	
 	$donnees = $manager->CountPost();

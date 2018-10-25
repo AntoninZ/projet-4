@@ -40,7 +40,7 @@ a:hover{text-decoration: underline;}
 	font-family: serif;
 	font-size: 1.1em;
 	text-align: justify;
-	margin-bottom: 50px;
+	margin-bottom: 35px;
 }
 
 .home-page .billet-simple-alaska article h2 {
@@ -75,7 +75,7 @@ a:hover{text-decoration: underline;}
 	background-position:bottom;
 	text-align: center;
 	color: #fff;
-	margin-bottom: 50px;
+	margin-bottom: 35px;
 }
 
 .home-page .billet-simple-alaska  aside h1 {
@@ -101,7 +101,7 @@ a:hover{text-decoration: underline;}
 .home-page .billet-simple-alaska  aside .edition {
 	position: absolute;
     bottom: 5%;
-    right: 15%;
+    right: 18.5%;
     font-size: 1.75em;
 }
 
@@ -189,7 +189,7 @@ a:hover{text-decoration: underline;}
 #summary a {color: #fff;}
 
 /* POST CONTENT */
-.single-post .post, .single-post .comment {
+.single-post .post, .single-post .comment, .legalNotice, .contact {
 	max-width: 960px;
 	margin: 0 auto;
 	background-color: #f5f5f5;
@@ -362,6 +362,59 @@ svg.svg-inline--fa.fa-long-arrow-alt-left.fa-w-14, svg.svg-inline--fa.fa-long-ar
 	color: #828282;
 }
 
+/* LEGAL NOTICE*/
+
+.legalNotice h2 {
+	color: #286f82;
+}
+
+.legalNotice a {
+	color: #000;
+}
+
+/* CONTACT */
+.contact {
+	padding-top: 5%;
+	min-height: 85vh;
+	box-sizing: border-box;
+}
+.contact form {
+	display: flex;
+	flex-direction: column;
+	max-width: 300px;
+	margin: 0% 20%;
+}
+
+.contact label {
+	line-height: 2;
+}
+
+.contact input, textarea {
+	margin-bottom: 1%;
+	border-radius: 5px;
+	padding: 2%;
+	border: 1px solid #286f82;
+}
+
+.contact textarea {
+	height: 150px;
+	width: 450px;
+	margin-bottom: 10%;
+}
+
+.contact button {
+	background-color: #286f82;
+	color: #fff;
+	border: 1px solid #ccc;
+	padding: 2%;
+	width: 100px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.contact button:hover{
+	background-color: #368094;
+}
 
 /* FOOTER */
 
