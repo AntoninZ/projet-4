@@ -6,9 +6,6 @@ try {
 		{
 			ob_start(); ?>
 			<section class="viewList">
-				<header>
-					<h2>Section : Membre</h2>
-				</header>
 				<article>
 					<table>
 						<thead>
@@ -31,7 +28,7 @@ try {
 							</tr>
 							
 							<?php }
-							if(empty($comments)){ ?>
+							if(empty($users)){ ?>
 							
 							<td colspan="4" class="emptyMessage"> Il n'y a aucun membre d'inscrit.</td>
 							

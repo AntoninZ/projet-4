@@ -11,7 +11,7 @@ try {
 					<form method="post" action="?function=editUser&id=<?= $user->getId(); ?>&update">
 						
 						<label for="username">Pseudo :</label>
-						<input type="text" id="username" name="username" value="<?= $user->getUsername(); ?>"></input>
+						<input type="text" id="username" name="username" value="<?= $user->getUsername(); ?>">
 						
 						<label for="role">Rôle de l'utilisateur :</label>
 						<select id="role" name="role">

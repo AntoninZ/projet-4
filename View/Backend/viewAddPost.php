@@ -22,7 +22,7 @@ try {
 						<?php }?>
 						</select>
 						
-						<button type="submit">Ajouter</submit>
+						<button type="submit">Ajouter</button>
 					</form>
 				</article>
 			</section>

@@ -10,7 +10,7 @@ try {
 				<article>
 					<form method="post" action="?function=edit&id=<?= $article->getId(); ?>&update">
 						<label for="title" class="nolabel" placeholder="Titre de l'article">Titre</label>
-						<input type="text" id="title" name="title" value="<?= $article->getTitle(); ?>"></input>
+						<input type="text" id="title" name="title" value="<?= $article->getTitle(); ?>">
 						
 						<label for="content" class="nolabel">Contenu de l'article</label>
 						<textarea id="textEditor" name="content"><?= $article->getContent(); ?></textarea>
@@ -24,7 +24,8 @@ try {
 						<?php }?>
 						</select>
 						
-						<label for="date" class="nolabel">Date</label><input type="text" readonly="readonly" id="date" name="date" value="<?= $article->getDate(); ?>"></input>
+						<label for="date" class="nolabel">Date</label>
+						<input type="text" readonly="readonly" id="date" name="date" value="<?= $article->getDate(); ?>">
 						
 						<button type="submit">Valider</button>
 					</form>

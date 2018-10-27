@@ -11,7 +11,7 @@ try {
 					<form method="post" action="?function=editChapter&id=<?= $chapter->getId(); ?>&update">
 						
 						<label for="name">Nom du chapitre</label>
-						<input type="text" id="name" name="name" value="<?= $chapter->getName(); ?>"></input>
+						<input type="text" id="name" name="name" value="<?= $chapter->getName(); ?>">
 						
 						<button type="submit">Valider</button>
 					</form>

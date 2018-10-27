@@ -6,11 +6,8 @@ try {
 		{
 			ob_start(); ?>
 			<section class="viewList">
-				<header>
-					<h2>Section : Chapitre</h2>
-				</header>
 				<article>
-					<a href="?function=addChapter"><button class="buttonAdd">Créer un chapitre</button></a>
+					<a href="?function=addChapter" class="createNew"><i class="fas fa-plus"></i> Créer un chapitre.</a>
 					
 					<table>
 						<thead>

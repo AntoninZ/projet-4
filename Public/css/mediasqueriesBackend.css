@@ -1,0 +1,114 @@
+@media only screen and (max-width: 959px) {
+	
+	/* SECTION LOGIN */
+	
+	.panel-connexion > header h1 {
+		font-size: 1.5em;
+		text-align: left;
+		padding: 2% 0% 5% 4%;
+		box-sizing: border-box;
+	}
+	
+	.panel-connexion > header h2 {
+		font-size: 1.2em;
+		padding: 3% 0%;
+	}
+	
+	panel-connexion section article {
+		width: 100%;
+	}
+	
+	/* SECTION DASHBOARD */
+	
+	.panel-admin > header h1 {
+		font-size: 1.5em;
+		text-align: left;
+		padding: 2% 0% 5% 4%;
+		box-sizing: border-box;
+	}
+	
+	.panel-admin > header h2 {
+		font-size: 1.2em;
+		padding: 3% 0%;
+	}
+	
+	.panel-admin section {
+		padding-bottom: 200px;
+		min-height: 360px;
+	}
+	
+	.panel-admin nav > div {
+		margin-top: 15px;
+		position: static;
+		width: 100%;
+	}
+	
+	.panel-admin nav div h2 {
+		display: none;
+	}
+	
+	.panel-admin nav div ul li a {
+		padding: 20% 0%;
+		text-align: center;
+	}
+	
+	.panel-admin nav div ul li a svg {
+		font-size: 1.5em;
+	
+	}
+	
+	.panel-admin nav div ul li a p {
+		display: none;
+	}
+	
+	
+	/* GLOBAL TABLE */
+	
+	.viewList article table thead {
+		display:none;
+	}
+	
+	.viewList article table tr {
+		display: flex;
+		flex-direction: column;
+		margin-top: 15px;
+	}
+	.viewList article table tr td:first-child {
+		background-color: #286f82;
+		text-align: left;
+	}
+	
+	.viewList article table tr td:first-child a {
+		color: #fff;
+	}
+	
+	.viewList article tr td {
+		border: none !important;
+	}
+	
+	.viewList article tr {
+		border: 1px solid #0e4250;
+	}
+	
+	.viewList article tr td.emptyMessage {
+		color: #fff;
+	}
+	
+	.panel-admin nav div div#notification {
+		display:none;
+	}
+	
+	/* SECTION NEW POST */
+	section.viewPost article form select {
+		width: 100%;
+		margin-bottom: 15px;
+	}
+}
+
+@media only screen and (min-width:747px) and (min-width: 960px) and (min-height: 520px){
+	
+}
+
+@media only screen and (min-width:961px){
+	
+}

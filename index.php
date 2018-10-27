@@ -100,12 +100,12 @@ if(isset($_GET['page'])){
 		}
 		else
 		{
-			throw new Exception('La page demandé n\'existe pas.');
+			throw new Exception('La page demandée n\'existe pas.');
 		}
 	}
 	catch(Exception $e) 
 	{
-		echo 'Erreur :' .$e->getMessage();
+		$error = 'Erreur : ' .$e->getMessage();
 		require_once $_SERVER['DOCUMENT_ROOT'].('/View/viewError.php');
 	}
 }

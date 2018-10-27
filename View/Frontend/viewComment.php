@@ -29,12 +29,12 @@
 			<form id="signIn" method="post" action="?page=postView&amp;id=<?= $_GET['id']; ?>&amp;signIn">
 				<div>
 					<label for="username">Pseudo :</label>
-					<input type="text" id="username" name="username" required></input>
+					<input type="text" id="username" name="username" required>
 				</div>
 				
 				<div>
 					<label for="password">Mot de passe :</label>
-					<input type="password" id="password" name="password" required></input>
+					<input type="password" id="password" name="password" required>
 				</div>
 				<button type="submit">Se connecter</button>
 				<p onclick="slide('#signIn','#signUp')">Pas encore inscrit ? S'inscrire.</p>
@@ -44,18 +44,18 @@
 			<form id="signUp" method="post" action="?page=postView&amp;id=<?= $_GET['id']; ?>&amp;signUp" style="display:none">
 				
 					<div>
-						<label for="newUsername" required>Pseudo :</label>
-						<input type="text" id="newUsername" name="newUsername"></input>
+						<label for="newUsername">Pseudo :</label>
+						<input type="text" id="newUsername" name="newUsername" required>
 					</div>
 					
 					<div>
 						<label for="newPassword">Mot de passe :</label>
-						<input type="password" id="newPassword" name="newPassword" required></input>
+						<input type="password" id="newPassword" name="newPassword" required>
 					</div>
 					
 					<div>
 						<label for="passwordCheck">Confirmer votre mot de passe :</label>
-						<input type="password" id="passwordCheck" name="passwordCheck" required></input>
+						<input type="password" id="passwordCheck" name="passwordCheck" required>
 					</div>
 				
 				

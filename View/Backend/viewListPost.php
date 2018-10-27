@@ -6,11 +6,8 @@ try {
 		{
 			ob_start(); ?>
 			<section class="viewList">
-				<header>
-					<h2>Section : Article</h2>
-				</header>
 				<article>
-					<a href="?action=panel&function=add"><button class="buttonAdd">Créer un article</button></a>
+					<a href="?action=panel&function=add" class="createNew"><i class="fas fa-plus"></i> Créer un article.</a>
 					
 					<table>
 						<thead>

@@ -10,9 +10,9 @@ try {
 				<article>
 					<form method="post" action="?function=editChapter&new&id=<?= $chapter->getId(); ?>">
 						<label for="name">Nom du chapitre</label>
-						<input type="text" id="name" name="name"></input>
+						<input type="text" id="name" name="name">
 						
-						<button type="submit">Ajouter</submit>
+						<button type="submit">Ajouter</button>
 					</form>
 				</article>
 			</section>

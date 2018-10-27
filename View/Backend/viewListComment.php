@@ -6,9 +6,6 @@ try {
 		{
 			ob_start(); ?>
 			<section class="viewList">
-				<header>
-					<h2>Section : Commentaire</h2>
-				</header>
 				<article>
 					
 					<table>

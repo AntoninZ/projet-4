@@ -8,6 +8,9 @@
 	.home-page .billet-simple-alaska article, .home-page .billet-simple-alaska aside {
 		width: 100%;
 	}
+	.home-page .billet-simple-alaska article {
+		margin-bottom: 0px;
+	}
 	.home-page .billet-simple-alaska aside{
 		margin-bottom: 134px;
 		position: relative;
@@ -43,14 +46,22 @@
 	.single-post > header div {
 		top: 40px;
 		right: 4%;
+		z-index: 12;
+		position: fixed;
+		color: #909090;
 	}
 	
 	/* SUMMARY (NAVBAR) */
 	.single-post #summary {
+		position: fixed;
+		top : 0;
+		height: 100vh;
+		overflow-y: overlay;
 		width:100%;
 		box-sizing: border-box;
 		padding: 4% 10%;
 		font-size: 1.1em;
+		z-index: 11;
 	}
 	
 	.single-post #summary dd {
@@ -121,6 +132,28 @@
 		display:block;
 		width: 100%;
 	}
+	
+	/* SECTION LEGAL NOTICE */
+	
+	.legalNotice {
+		padding-bottom: 200px;
+	}
+	
+	/* SECTION CONTACT */
+	
+	.contact {
+		padding-bottom: 200px;
+	}
+	
+	.contact form{
+		margin: 0% 5%;
+	}
+	.contact textarea
+	{
+		width: 95%;
+		height: 200px;
+	}
+	
 	/* FOOTER */
 	footer {
 		flex-direction: column;
@@ -189,6 +222,20 @@
 	.single-post > header h2 {
 		font-size: 1.5em;
 		padding: 2% 0%;
+	}
+	
+	/* SECTION CONTACT */
+	.contact {
+		padding-bottom: 200px;
+	}
+	
+	.contact form{
+		margin: 0% 20%;
+	}
+	.contact textarea
+	{
+		width: 450px;
+		height: 150px;
 	}
 }
 @media only screen and (min-width:747px) and (max-width: 960px){

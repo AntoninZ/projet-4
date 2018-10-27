@@ -1,6 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].('/Controller/connectController.php');
-require_once $_SERVER['DOCUMENT_ROOT'].('/Model/ChapterManager.php');
+require_once $_SERVER['DOCUMENT_ROOT'].('/Model/chapterManager.php');
 
 
 function getChapter() {		

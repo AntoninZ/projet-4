@@ -127,6 +127,11 @@ body.panel-admin {
 	text-decoration: none;
 	font-family: sans-serif;
 }
+.panel-admin nav div ul li a p {
+	display: inline;
+	margin-right: 0%;
+}
+
 .panel-admin nav div ul li a svg {
 	margin-right: 6%;
 }
@@ -183,6 +188,12 @@ section.viewAdminBoard p, section.viewAdminBoard a {
 section.viewAdminBoard a {
 	color: #000;
 	
+}
+
+.createNew { /* add post and add chapter link */
+	font-family: sans-serif;
+	font-size: 1.1em;
+	color: #286f82 !important;
 }
 /* VIEW ADD POST & UPDATE POST */
 

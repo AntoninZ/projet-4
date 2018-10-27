@@ -10,10 +10,10 @@
 				<h2>Connexion</h2>
 				<hr>
 				<label for="username">Pseudo</label>
-				<input type="text" id="username" name="username" required placeholder="Entrez votre pseudo"></input>
+				<input type="text" id="username" name="username" required placeholder="Entrez votre pseudo">
 				
 				<label for="password">Mot de passe</label>
-				<input type="password" id="password" name="password" required ></input>
+				<input type="password" id="password" name="password" required >
 				
 				<button type="submit">Se connecter</button>
 				

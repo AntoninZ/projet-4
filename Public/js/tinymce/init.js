@@ -1,7 +1,7 @@
 
 tinymce.init({
 	selector: '#textEditor',
-	language_url : 'public/js/tinymce/langs/fr_FR.js',
+	language_url : '/Public/js/tinymce/langs/fr_FR.js',
 	language: 'fr_FR',
 	menubar: true,
 	branding: false,

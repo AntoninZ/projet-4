@@ -8,7 +8,7 @@ try {
 			<body class="panel-admin">
 				<header>
 					<h1><a href="index.php">Jean Forteroche - <span>Un billet simple pour l'alaska</span></a></h1>
-					<h2>Admistration</h2>
+					<h2>Admistration<?= $title; ?></h2>
 				</header>
 				<span class="navBackground"></span>
 				<nav>
@@ -18,37 +18,37 @@ try {
 							<li>
 								<a href="?">
 									<i class="fas fa-home"></i>
-									Tableau de bord
+									<p>Tableau de bord</p>
 								</a>
 							</li>
 							<li>
 								<a href="?function=listPost">
 									<i class="fas fa-archive"></i>
-									Liste des articles
+									<p>Liste des articles</p>
 								</a>
 							</li>
 							<li>
 								<a href="?function=listChapter">
 									<i class="fas fa-list-ol"></i>
-									Liste des chapitres
+									<p>Liste des chapitres</p>
 								</a>
 							</li>
 							<li>
 								<a href="?function=moderate">
 									<i class="fas fa-comments"></i>
-									Gérer les commentaires
+									<p>Gérer les commentaires</p>
 								</a>
 							</li>
 							<li>
 								<a href="?function=members">
 									<i class="fas fa-users-cog"></i>
-									Gérer les membres
+									<p>Gérer les membres</p>
 								</a>
 							</li>
 							<li>
 								<a href="?signOut">
 									<i class="fas fa-sign-out-alt"></i>
-									Se déconnecter
+									<p>Se déconnecter</p>
 								</a>
 							</li>
 						</ul>

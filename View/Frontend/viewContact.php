@@ -1,11 +1,7 @@
 <body class="single-post">
 	<header>
-		
 		<h1><a href="index.php">Jean Forteroche - <span>Un billet simple pour l'alaska</span></a></h1>
 		<h2>Formulaire de contact</h2>	
-		<div>
-			<i class="fas fa-bars" onclick="toggleSummary()" title="Sommaire"></i>
-		</div>
 	</header>
 	
 	<section class="contact">

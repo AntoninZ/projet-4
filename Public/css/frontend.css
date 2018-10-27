@@ -438,3 +438,33 @@ footer p {
 footer a {
 	color: #fff;
 }
+
+/* VIEW ERROR */
+.viewError article {
+	margin-top: 5%;
+	text-align: center;
+}
+
+.viewError article p {
+    font-size: 1.75em;
+    color: #b3b3b3;
+}
+
+.viewError article svg.svg-inline--fa.fa-dizzy.fa-w-16 {
+    font-size: 5em;
+    color: #b3b3b3;
+}
+
+.viewError article button {
+	background-color: #286f82;
+	border: 1px solid #0e4250;
+	color: #fff;
+	padding: 5px 20px;
+	border-radius: 5px;
+	margin-top: 1%;
+	cursor: pointer;
+}
+
+.viewError article button:hover{
+	background-color: #368094;
+}

@@ -44,7 +44,7 @@
 		{
 			$req = $this->_db->prepare('DELETE FROM comments WHERE id = :id');
 			
-			$req->bindValue(':id', $user->getId(), PDO::PARAM_INT);
+			$req->bindValue(':id', $comment->getId(), PDO::PARAM_INT);
 			
 			$req->execute();
 		}
