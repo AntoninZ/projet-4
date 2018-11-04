@@ -17,16 +17,24 @@ function toggleSummary(){
 	
 }
 
+// Slide up & down the logins forms
 function slide(up, down){
 	$(up).slideUp();
 	$(down).slideDown();
 }
 
+// In Admin panel, notification fadeOut after 3 sec
 function notification(){
 	setTimeout(function(){
 		$('#notification').fadeOut('slow')
 	}, 3000);
 	
+}
+
+// Scroll Top Button on post
+
+function buttonTop(){
+	$("html, body").animate({ scrollTop: 0 }, 1000);
 }
 
 

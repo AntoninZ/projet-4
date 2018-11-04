@@ -7,22 +7,26 @@ try {
 			ob_start(); ?>
 
 			<section class="viewAdminBoard">
-				<h2>Bonjour <?= $_SESSION['username']; ?>, voici les nouvelles du site</h2>
+				<h2>Bonjour <?= $_SESSION['username']; ?></h2>
 				<hr />
 				
-				<h3>Commentaires</h3>
-				<p>Vous avez ADD NUMBER MODERATE COMMENT commentaires à modérer dont ADD REPORT COMMENT qui nous ont été signalé.</p>
-				<a href="">Accéder à la modération</a>
+				<h3>Liste des articles</h3>
+				<p>Visionner l'ensemble des articles, créer un nouvel article, modifier ou supprimer un article existant.</p>
 				
-				<h3>Articles</h3>
-				<p>Vous cumulez ADD NUMBER ARTICLE articles. Souhaitez-vous en écrire un nouveau ?</p>
-				<a href="">Ecrire un nouvel article</a>
+				<h3>Liste des chapitres</h3>
+				<p>Visionner l'ensemble des chapitres, créer un nouveau chapitre, modifier ou supprimer un chapitre existant.<br />
+				Les chapitres sont visibles dans le menu du blog ainsi que les articles associés.</p>
 				
-				<h3>Membres</h3>
-				<p>Actuellement il y a ADD NUMBER OF ACCOUNT membres inscrits.</p>
-				<a href="">Accéder à la gestion des membres</a>
+				<h3>Gérer les commentaires</h3>
+				<p>Visionner l'ensemble des commentaires non-vérifiés ou signalés par les lecteurs. Valider ou supprimer un commentaire.<br />
+				La liste des commentaires affichera en priorité les commentaires les plus signalés.<br />
+				Les commentaires validés seront visibles uniquement sur la page de l'article associé pour simplifier la modération.</p>
 				
+				<h3>Gérer les membres</h3>
+				<p>Visionner l'ensemble des membres inscrits. Modifier le rôle d'un membre ou supprimer un compte.</p>
 				
+				<h3>Se déconnecter</h3>
+				<p>Quitter et fermer la session d'administrateur.</p>
 			</section>
 
 			<?php

@@ -25,7 +25,7 @@ a:hover{text-decoration: underline;}
 										/* ///////////// */
 .home-page .billet-simple-alaska {
 	position: relative;
-	min-height: 95vh;
+	min-height: 100vh;
 	display: flex;
 	flex-wrap: nowrap;
 }
@@ -34,13 +34,13 @@ a:hover{text-decoration: underline;}
 	width: 50%;
 	min-height: 95vh;
 	box-sizing: border-box;
-	padding: 5%;
+	padding: 5% 5% 0% 5%;
 	background-color: #0e4250;
 	color: #efefef;
 	font-family: serif;
 	font-size: 1.1em;
 	text-align: justify;
-	margin-bottom: 35px;
+
 }
 
 .home-page .billet-simple-alaska article h2 {
@@ -69,13 +69,12 @@ a:hover{text-decoration: underline;}
 .home-page .billet-simple-alaska aside {
 	width: 50%;
 	box-sizing: border-box;
-	padding: 5%;
+	padding: 5% 5% 0% 5%;
 	background-image: url('../images/bg-1.jpg');
 	background-size: cover;
 	background-position:bottom;
 	text-align: center;
 	color: #fff;
-	margin-bottom: 35px;
 }
 
 .home-page .billet-simple-alaska  aside h1 {
@@ -168,6 +167,15 @@ a:hover{text-decoration: underline;}
 	margin-left: 10%;
 }
 
+svg.svg-inline--fa.fa-arrow-up.fa-w-14 {
+	position: fixed;
+	right: 3%;
+	bottom: 5%;
+	color: #fff;
+	font-size: 2em;
+	cursor: pointer;
+	z-index: 1000;		
+}
 
 /* SUMMARY MENU */
 #summary {
@@ -308,6 +316,12 @@ svg.svg-inline--fa.fa-long-arrow-alt-left.fa-w-14, svg.svg-inline--fa.fa-long-ar
 }
 .single-post .comment aside.commentForm form label {
 	line-height: 2;
+}
+
+.single-post .comment aside form input {
+	border: 1px solid #286f82;
+	border-radius: 5px;
+	padding: 5px;
 }
 .single-post .comment aside.commentForm form textarea {
 	width: 95%;

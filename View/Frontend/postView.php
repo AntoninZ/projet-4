@@ -54,4 +54,4 @@
 			?>
 			</aside>
 		</section>
-		
+		<i class="fas fa-arrow-up" onclick="buttonTop()"></i>
