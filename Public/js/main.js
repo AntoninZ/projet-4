@@ -10,8 +10,6 @@ function toggleSummary(){
 	}
 	else{
 		$('#summary').animate({'right': '-100%'}, 'slow');
-		console.log('deux');
-		console.log($('#summary').css('margin-right'));
 		test = 0
 	}
 	
@@ -38,4 +36,21 @@ function buttonTop(){
 }
 
 
+// Agreement cookie
+
+function agreeCookie(){	
+	if(localStorage.getItem("agreement") === 'true')
+	{
+		$('#cookieAgree').css({'display' : 'none'});
+	}
+	else
+	{
+		$('#btnCookie').click(function(){
+			localStorage.setItem('agreement', 'true');
+			$('#cookieAgree').css({'display' : 'none'});
+		});
+	}
+}
+
 $(document).ready(notification());
+$(document).ready(agreeCookie());

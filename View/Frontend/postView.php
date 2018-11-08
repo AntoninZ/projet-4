@@ -55,3 +55,8 @@
 			</aside>
 		</section>
 		<i class="fas fa-arrow-up" onclick="buttonTop()"></i>
+
+		<div id="cookieAgree">
+			<p>En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies permettant uniquement la connexion des membres à l'espace commentaire.</p>
+			<button id="btnCookie" value="ok">ok</button>
+		</div>

@@ -228,7 +228,29 @@ svg.svg-inline--fa.fa-arrow-up.fa-w-14 {
 	hyphens: auto;
 }
 
+#cookieAgree {
+	position: fixed;
+	z-index: 1000;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	text-align: center;
+	background-color: #286f82;
+	color: #fff;
+}
 
+#cookieAgree p {
+	display: inline-block;
+	margin-right: 50px;
+}
+
+#btnCookie {
+	border: 1px solid #fff;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 5px 20px;
+	cursor: pointer;
+}
 /* NAVIGATION */
 
 .single-post .navigation .previous {
